@@ -1,0 +1,23 @@
+{
+  "name": "intensiscore_back",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "directus start",
+    "migrate:latest": "directus database migrate:latest",
+    "bootstrap": "directus bootstrap && npm run snapshot:apply",
+    "snapshot:create": "directus schema snapshot ./snapshots/\"$(date \"+%F\")\"-snapshot-\"$(date \"+%s\")\".yaml",
+    "snapshot:apply": "directus schema apply --yes ./snapshots/\"$(ls -t ./snapshots | head -1)\"",
+    "snapshot:dry-apply": "directus schema apply --yes --dry-run ./snapshots/\"$(ls -t ./snapshots | head -1)\"",
+    "snapshots:clear": "rm -rf ./snapshots/*",
+    "argon2-rebuild": "npm rebuild argon2 --build-from-source"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "directus": "^9.0.0-rc.98",
+    "pg": "^8.7.1"
+  }
+}
