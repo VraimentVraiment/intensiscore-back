@@ -6,7 +6,7 @@ name: directus
 
 # The runtime the application uses.
 # Complete list of available runtimes: https://docs.platform.sh/create-apps/app-reference.html#types
-type: nodejs:18
+type: nodejs:20
 
 # The relationships of the application with services or other applications.
 # The left-hand side is the name of the relationship as it will be exposed
@@ -15,8 +15,8 @@ type: nodejs:18
 # More information: https://docs.platform.sh/create-apps/app-reference.html#relationships
 relationships:
   database: "db:postgresql"
-  rediscache: "cacheredis:redis"
-  redisratelimit: "ratelimitredis:redis"
+  # rediscache: "cacheredis:redis"
+  # redisratelimit: "ratelimitredis:redis"
 
 # The size of the persistent disk of the application (in MB). Minimum value is 128.
 disk: 1024
@@ -43,7 +43,7 @@ web:
     start: npx directus start
 
 #
-timezone: "America/New_York"
+timezone: "Europe/Paris"
 
 # Variables to control the environment. More information: https://docs.platform.sh/create-apps/app-reference.html#variables
 variables:
@@ -90,8 +90,11 @@ hooks:
       touch var/platformsh.installed
     else
       # Update the database in case directus updated in the most recent push
-      npx directus database migrate:latest
-      npm run snapshot:apply
+      npm run migrate:latest
+
+      # TODO apply snapshots (we need directus to be running to do this)
+      # npm run snapshot:apply
+      
     fi;
 
 # Scheduled tasks for the app.
@@ -108,7 +111,7 @@ crons:
 
 # Information on the app's source code and operations that can be run on it.
 # More information: https://docs.platform.sh/create-apps/app-reference.html#source
-source:
+# source:
   ######################################################################################################################
   ##                                                                                                                  ##
   ## This source operation is part of the Platform.sh process of updating and maintaining our collection of           ##
@@ -118,7 +121,7 @@ source:
   ##                  YOU CAN SAFELY DELETE THIS COMMENT AND THE LINES BENEATH IT                                     ##
   ##                                                                                                                  ##
   ######################################################################################################################
-  operations:
-    auto-update:
-      command: |
-        curl -fsS https://raw.githubusercontent.com/platformsh/source-operations/main/setup.sh | { bash /dev/fd/3 sop-autoupdate; } 3<&0
+  # operations:
+  #   auto-update:
+  #     command: |
+  #       curl -fsS https://raw.githubusercontent.com/platformsh/source-operations/main/setup.sh | { bash /dev/fd/3 sop-autoupdate; } 3<&0

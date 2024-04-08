@@ -7,17 +7,18 @@
     "start": "directus start",
     "migrate:latest": "directus database migrate:latest",
     "bootstrap": "directus bootstrap && npm run snapshot:apply",
-    "snapshot:create": "directus schema snapshot ./snapshots/\"$(date \"+%F\")\"-snapshot-\"$(date \"+%s\")\".yaml",
-    "snapshot:apply": "directus schema apply --yes ./snapshots/\"$(ls -t ./snapshots | head -1)\"",
-    "snapshot:dry-apply": "directus schema apply --yes --dry-run ./snapshots/\"$(ls -t ./snapshots | head -1)\"",
-    "snapshots:clear": "rm -rf ./snapshots/*",
+    "snapshot:create": "directus-sync pull",
+    "snapshot:diff": "directus-sync diff",
+    "snapshot:apply": "directus-sync push",
     "argon2-rebuild": "npm rebuild argon2 --build-from-source"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "directus": "^9.0.0-rc.98",
-    "pg": "^8.7.1"
+    "directus": "^10.10.5",
+    "directus-extension-sync": "^1.1.2",
+    "directus-sync": "^1.4.0",
+    "pg": "^8.11.5"
   }
 }

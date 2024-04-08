@@ -1,0 +1,38 @@
+[
+  {
+    "role": null,
+    "collection": "intensiscore__survey_results",
+    "action": "create",
+    "permissions": {},
+    "validation": {},
+    "presets": null,
+    "fields": [
+      "*"
+    ],
+    "_syncId": "59797750-c13e-4cc8-a394-83706a4390f4"
+  },
+  {
+    "role": null,
+    "collection": "intensiscore__survey_results",
+    "action": "read",
+    "permissions": null,
+    "validation": null,
+    "presets": null,
+    "fields": [
+      "id"
+    ],
+    "_syncId": "22c16b94-2c68-4e76-b937-bc4ad1588be1"
+  },
+  {
+    "role": null,
+    "collection": "intensiscore__survey_schemas",
+    "action": "read",
+    "permissions": {},
+    "validation": {},
+    "presets": null,
+    "fields": [
+      "*"
+    ],
+    "_syncId": "cf3d5003-ad71-4f9b-a157-fbaa7b77fa39"
+  }
+]
