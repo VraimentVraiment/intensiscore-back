@@ -15,9 +15,3 @@
     default_ttl: 0
     cookies: [ '*' ]
     headers: [ 'Accept', 'Accept-Language' ]
-
-# A basic redirect definition
-# More information: https://docs.platform.sh/define-routes.html#basic-redirect-definition
-"https://www.{default}/":
-  type: redirect
-  to: "https://{default}/"
