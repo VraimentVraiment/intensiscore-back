@@ -1,13 +1,13 @@
 {
-  "collection": "intensiscore__survey_schemas",
-  "field": "content",
+  "collection": "intensiscore__pages",
+  "field": "slug",
   "type": "string",
   "meta": {
-    "collection": "intensiscore__survey_schemas",
+    "collection": "intensiscore__pages",
     "conditions": null,
     "display": null,
     "display_options": null,
-    "field": "content",
+    "field": "slug",
     "group": null,
     "hidden": false,
     "interface": "input",
@@ -15,7 +15,7 @@
     "options": null,
     "readonly": false,
     "required": true,
-    "sort": null,
+    "sort": 3,
     "special": null,
     "translations": null,
     "validation": null,
@@ -23,8 +23,8 @@
     "width": "full"
   },
   "schema": {
-    "name": "content",
-    "table": "intensiscore__survey_schemas",
+    "name": "slug",
+    "table": "intensiscore__pages",
     "data_type": "character varying",
     "default_value": null,
     "max_length": 255,

@@ -1,12 +1,12 @@
 {
-  "collection": "intensiscore__survey_schemas",
+  "collection": "intensiscore__pages",
   "meta": {
     "accountability": "all",
     "archive_app_filter": true,
-    "archive_field": null,
-    "archive_value": null,
+    "archive_field": "status",
+    "archive_value": "archived",
     "collapse": "open",
-    "collection": "intensiscore__survey_schemas",
+    "collection": "intensiscore__pages",
     "color": null,
     "display_template": null,
     "group": null,
@@ -19,10 +19,10 @@
     "sort": null,
     "sort_field": null,
     "translations": null,
-    "unarchive_value": null,
+    "unarchive_value": "draft",
     "versioning": false
   },
   "schema": {
-    "name": "intensiscore__survey_schemas"
+    "name": "intensiscore__pages"
   }
 }

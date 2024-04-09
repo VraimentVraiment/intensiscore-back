@@ -225,11 +225,11 @@ type Subscription {
   directus_flows_mutated(event: EventEnum): directus_flows_mutated
   directus_operations_mutated(event: EventEnum): directus_operations_mutated
   directus_dashboards_mutated(event: EventEnum): directus_dashboards_mutated
-  intensiscore__survey_schemas_mutated(event: EventEnum): intensiscore__survey_schemas_mutated
   intensiscore__survey_results_mutated(event: EventEnum): intensiscore__survey_results_mutated
   directus_translations_mutated(event: EventEnum): directus_translations_mutated
   directus_versions_mutated(event: EventEnum): directus_versions_mutated
   directus_sync_id_map_mutated(event: EventEnum): directus_sync_id_map_mutated
+  intensiscore__pages_mutated(event: EventEnum): intensiscore__pages_mutated
 }
 
 """The `Boolean` scalar type represents `true` or `false`."""
@@ -1404,29 +1404,33 @@ type directus_webhooks_mutated {
   data: directus_webhooks
 }
 
+type intensiscore__pages {
+  id: ID!
+  status: String
+  title: String
+  content: JSON
+  content_func: count_functions
+  slug: String
+}
+
+type intensiscore__pages_mutated {
+  key: ID!
+  event: EventEnum
+  data: intensiscore__pages
+}
+
 type intensiscore__survey_results {
   id: ID!
   date_created: Date
   date_created_func: datetime_functions
-  survey_schema(filter: intensiscore__survey_schemas_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): intensiscore__survey_schemas
   content: String
+  survey_schema_id: Int
 }
 
 type intensiscore__survey_results_mutated {
   key: ID!
   event: EventEnum
   data: intensiscore__survey_results
-}
-
-type intensiscore__survey_schemas {
-  id: ID!
-  content: String
-}
-
-type intensiscore__survey_schemas_mutated {
-  key: ID!
-  event: EventEnum
-  data: intensiscore__survey_schemas
 }
 
 type server_info {
@@ -2182,13 +2186,6 @@ input hash_filter_operators {
   _nnull: Boolean
   _empty: Boolean
   _nempty: Boolean
-}
-
-input intensiscore__survey_schemas_filter {
-  id: number_filter_operators
-  content: string_filter_operators
-  _and: [intensiscore__survey_schemas_filter]
-  _or: [intensiscore__survey_schemas_filter]
 }
 
 input number_filter_operators {

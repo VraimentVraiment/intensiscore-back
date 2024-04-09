@@ -1,8 +1,4 @@
 type Query {
-  intensiscore__survey_schemas(filter: intensiscore__survey_schemas_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [intensiscore__survey_schemas!]!
-  intensiscore__survey_schemas_by_id(id: ID!, version: String): intensiscore__survey_schemas
-  intensiscore__survey_schemas_aggregated(groupBy: [String], filter: intensiscore__survey_schemas_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [intensiscore__survey_schemas_aggregated!]!
-  intensiscore__survey_schemas_by_version(version: String!, id: ID!): version_intensiscore__survey_schemas
   intensiscore__survey_results(filter: intensiscore__survey_results_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [intensiscore__survey_results!]!
   intensiscore__survey_results_by_id(id: ID!, version: String): intensiscore__survey_results
   intensiscore__survey_results_aggregated(groupBy: [String], filter: intensiscore__survey_results_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [intensiscore__survey_results_aggregated!]!
@@ -11,30 +7,34 @@ type Query {
   directus_sync_id_map_by_id(id: ID!, version: String): directus_sync_id_map
   directus_sync_id_map_aggregated(groupBy: [String], filter: directus_sync_id_map_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [directus_sync_id_map_aggregated!]!
   directus_sync_id_map_by_version(version: String!, id: ID!): version_directus_sync_id_map
+  intensiscore__pages(filter: intensiscore__pages_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [intensiscore__pages!]!
+  intensiscore__pages_by_id(id: ID!, version: String): intensiscore__pages
+  intensiscore__pages_aggregated(groupBy: [String], filter: intensiscore__pages_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [intensiscore__pages_aggregated!]!
+  intensiscore__pages_by_version(version: String!, id: ID!): version_intensiscore__pages
 }
 
 type Mutation {
-  create_intensiscore__survey_schemas_items(filter: intensiscore__survey_schemas_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_intensiscore__survey_schemas_input!]): [intensiscore__survey_schemas!]!
-  create_intensiscore__survey_schemas_item(data: create_intensiscore__survey_schemas_input!): intensiscore__survey_schemas
   create_intensiscore__survey_results_items(filter: intensiscore__survey_results_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_intensiscore__survey_results_input!]): [intensiscore__survey_results!]!
   create_intensiscore__survey_results_item(data: create_intensiscore__survey_results_input!): intensiscore__survey_results
   create_directus_sync_id_map_items(filter: directus_sync_id_map_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_directus_sync_id_map_input!]): [directus_sync_id_map!]!
   create_directus_sync_id_map_item(data: create_directus_sync_id_map_input!): directus_sync_id_map
-  update_intensiscore__survey_schemas_items(filter: intensiscore__survey_schemas_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_intensiscore__survey_schemas_input!): [intensiscore__survey_schemas!]!
-  update_intensiscore__survey_schemas_batch(filter: intensiscore__survey_schemas_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_intensiscore__survey_schemas_input!]): [intensiscore__survey_schemas!]!
-  update_intensiscore__survey_schemas_item(id: ID!, data: update_intensiscore__survey_schemas_input!): intensiscore__survey_schemas
+  create_intensiscore__pages_items(filter: intensiscore__pages_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_intensiscore__pages_input!]): [intensiscore__pages!]!
+  create_intensiscore__pages_item(data: create_intensiscore__pages_input!): intensiscore__pages
   update_intensiscore__survey_results_items(filter: intensiscore__survey_results_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_intensiscore__survey_results_input!): [intensiscore__survey_results!]!
   update_intensiscore__survey_results_batch(filter: intensiscore__survey_results_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_intensiscore__survey_results_input!]): [intensiscore__survey_results!]!
   update_intensiscore__survey_results_item(id: ID!, data: update_intensiscore__survey_results_input!): intensiscore__survey_results
   update_directus_sync_id_map_items(filter: directus_sync_id_map_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_directus_sync_id_map_input!): [directus_sync_id_map!]!
   update_directus_sync_id_map_batch(filter: directus_sync_id_map_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_directus_sync_id_map_input!]): [directus_sync_id_map!]!
   update_directus_sync_id_map_item(id: ID!, data: update_directus_sync_id_map_input!): directus_sync_id_map
-  delete_intensiscore__survey_schemas_items(ids: [ID]!): delete_many
-  delete_intensiscore__survey_schemas_item(id: ID!): delete_one
+  update_intensiscore__pages_items(filter: intensiscore__pages_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_intensiscore__pages_input!): [intensiscore__pages!]!
+  update_intensiscore__pages_batch(filter: intensiscore__pages_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_intensiscore__pages_input!]): [intensiscore__pages!]!
+  update_intensiscore__pages_item(id: ID!, data: update_intensiscore__pages_input!): intensiscore__pages
   delete_intensiscore__survey_results_items(ids: [ID]!): delete_many
   delete_intensiscore__survey_results_item(id: ID!): delete_one
   delete_directus_sync_id_map_items(ids: [ID]!): delete_many
   delete_directus_sync_id_map_item(id: ID!): delete_one
+  delete_intensiscore__pages_items(ids: [ID]!): delete_many
+  delete_intensiscore__pages_item(id: ID!): delete_one
 }
 
 type Subscription {
@@ -54,11 +54,11 @@ type Subscription {
   directus_flows_mutated(event: EventEnum): directus_flows_mutated
   directus_operations_mutated(event: EventEnum): directus_operations_mutated
   directus_dashboards_mutated(event: EventEnum): directus_dashboards_mutated
-  intensiscore__survey_schemas_mutated(event: EventEnum): intensiscore__survey_schemas_mutated
   intensiscore__survey_results_mutated(event: EventEnum): intensiscore__survey_results_mutated
   directus_translations_mutated(event: EventEnum): directus_translations_mutated
   directus_versions_mutated(event: EventEnum): directus_versions_mutated
   directus_sync_id_map_mutated(event: EventEnum): directus_sync_id_map_mutated
+  intensiscore__pages_mutated(event: EventEnum): intensiscore__pages_mutated
 }
 
 """The `Boolean` scalar type represents `true` or `false`."""
@@ -608,12 +608,52 @@ type directus_webhooks_mutated {
   data: directus_webhooks
 }
 
+type intensiscore__pages {
+  id: ID!
+  status: String
+  title: String
+  content: JSON
+  content_func: count_functions
+  slug: String
+}
+
+type intensiscore__pages_aggregated {
+  group: JSON
+  countAll: Int
+  count: intensiscore__pages_aggregated_count
+  countDistinct: intensiscore__pages_aggregated_count
+  avg: intensiscore__pages_aggregated_fields
+  sum: intensiscore__pages_aggregated_fields
+  avgDistinct: intensiscore__pages_aggregated_fields
+  sumDistinct: intensiscore__pages_aggregated_fields
+  min: intensiscore__pages_aggregated_fields
+  max: intensiscore__pages_aggregated_fields
+}
+
+type intensiscore__pages_aggregated_count {
+  id: Int
+  status: Int
+  title: Int
+  content: Int
+  slug: Int
+}
+
+type intensiscore__pages_aggregated_fields {
+  id: Float
+}
+
+type intensiscore__pages_mutated {
+  key: ID!
+  event: EventEnum
+  data: intensiscore__pages
+}
+
 type intensiscore__survey_results {
   id: ID!
   date_created: Date
   date_created_func: datetime_functions
-  survey_schema(filter: intensiscore__survey_schemas_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): intensiscore__survey_schemas
   content: String
+  survey_schema_id: Int
 }
 
 type intensiscore__survey_results_aggregated {
@@ -632,51 +672,18 @@ type intensiscore__survey_results_aggregated {
 type intensiscore__survey_results_aggregated_count {
   id: Int
   date_created: Int
-  survey_schema: Int
   content: Int
+  survey_schema_id: Int
 }
 
 type intensiscore__survey_results_aggregated_fields {
-  survey_schema: Float
+  survey_schema_id: Float
 }
 
 type intensiscore__survey_results_mutated {
   key: ID!
   event: EventEnum
   data: intensiscore__survey_results
-}
-
-type intensiscore__survey_schemas {
-  id: ID!
-  content: String
-}
-
-type intensiscore__survey_schemas_aggregated {
-  group: JSON
-  countAll: Int
-  count: intensiscore__survey_schemas_aggregated_count
-  countDistinct: intensiscore__survey_schemas_aggregated_count
-  avg: intensiscore__survey_schemas_aggregated_fields
-  sum: intensiscore__survey_schemas_aggregated_fields
-  avgDistinct: intensiscore__survey_schemas_aggregated_fields
-  sumDistinct: intensiscore__survey_schemas_aggregated_fields
-  min: intensiscore__survey_schemas_aggregated_fields
-  max: intensiscore__survey_schemas_aggregated_fields
-}
-
-type intensiscore__survey_schemas_aggregated_count {
-  id: Int
-  content: Int
-}
-
-type intensiscore__survey_schemas_aggregated_fields {
-  id: Float
-}
-
-type intensiscore__survey_schemas_mutated {
-  key: ID!
-  event: EventEnum
-  data: intensiscore__survey_schemas
 }
 
 """"""
@@ -689,17 +696,20 @@ type version_directus_sync_id_map {
 }
 
 """"""
-type version_intensiscore__survey_results {
+type version_intensiscore__pages {
   id: ID
-  date_created: Date
-  survey_schema: JSON
-  content: String
+  status: String
+  title: String
+  content: JSON
+  slug: String
 }
 
 """"""
-type version_intensiscore__survey_schemas {
+type version_intensiscore__survey_results {
   id: ID
+  date_created: Date
   content: String
+  survey_schema_id: Int
 }
 
 input big_int_filter_operators {
@@ -736,16 +746,19 @@ input create_directus_sync_id_map_input {
   created_at: Date
 }
 
+input create_intensiscore__pages_input {
+  id: ID
+  status: String
+  title: String
+  content: JSON
+  slug: String
+}
+
 input create_intensiscore__survey_results_input {
   id: ID
   date_created: Date
-  survey_schema: create_intensiscore__survey_schemas_input
   content: String
-}
-
-input create_intensiscore__survey_schemas_input {
-  id: ID
-  content: String
+  survey_schema_id: Int
 }
 
 input date_filter_operators {
@@ -1010,21 +1023,25 @@ input hash_filter_operators {
   _nempty: Boolean
 }
 
+input intensiscore__pages_filter {
+  id: number_filter_operators
+  status: string_filter_operators
+  title: string_filter_operators
+  content: string_filter_operators
+  content_func: count_function_filter_operators
+  slug: string_filter_operators
+  _and: [intensiscore__pages_filter]
+  _or: [intensiscore__pages_filter]
+}
+
 input intensiscore__survey_results_filter {
   id: string_filter_operators
   date_created: date_filter_operators
   date_created_func: datetime_function_filter_operators
-  survey_schema: intensiscore__survey_schemas_filter
   content: string_filter_operators
+  survey_schema_id: number_filter_operators
   _and: [intensiscore__survey_results_filter]
   _or: [intensiscore__survey_results_filter]
-}
-
-input intensiscore__survey_schemas_filter {
-  id: number_filter_operators
-  content: string_filter_operators
-  _and: [intensiscore__survey_schemas_filter]
-  _or: [intensiscore__survey_schemas_filter]
 }
 
 input number_filter_operators {
@@ -1072,14 +1089,17 @@ input update_directus_sync_id_map_input {
   created_at: Date
 }
 
+input update_intensiscore__pages_input {
+  id: ID
+  status: String
+  title: String
+  content: JSON
+  slug: String
+}
+
 input update_intensiscore__survey_results_input {
   id: ID
   date_created: Date
-  survey_schema: update_intensiscore__survey_schemas_input
   content: String
-}
-
-input update_intensiscore__survey_schemas_input {
-  id: ID
-  content: String
+  survey_schema_id: Int
 }
