@@ -229,7 +229,10 @@ type Subscription {
   directus_translations_mutated(event: EventEnum): directus_translations_mutated
   directus_versions_mutated(event: EventEnum): directus_versions_mutated
   directus_sync_id_map_mutated(event: EventEnum): directus_sync_id_map_mutated
+  intensiscore__tags_mutated(event: EventEnum): intensiscore__tags_mutated
   intensiscore__pages_mutated(event: EventEnum): intensiscore__pages_mutated
+  intensiscore__solution_sheets_intensiscore__tags_mutated(event: EventEnum): intensiscore__solution_sheets_intensiscore__tags_mutated
+  intensiscore__solution_sheets_mutated(event: EventEnum): intensiscore__solution_sheets_mutated
 }
 
 """The `Boolean` scalar type represents `true` or `false`."""
@@ -1408,15 +1411,45 @@ type intensiscore__pages {
   id: ID!
   status: String
   title: String
-  content: JSON
-  content_func: count_functions
   slug: String
+  content: String
 }
 
 type intensiscore__pages_mutated {
   key: ID!
   event: EventEnum
   data: intensiscore__pages
+}
+
+type intensiscore__solution_sheets {
+  id: ID!
+  status: String
+  sort: Int
+  type: String
+  title: String
+  content: String
+  description: String
+  image(filter: directus_files_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_files
+  tags(filter: intensiscore__solution_sheets_intensiscore__tags_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [intensiscore__solution_sheets_intensiscore__tags]
+  tags_func: count_functions
+}
+
+type intensiscore__solution_sheets_intensiscore__tags {
+  id: ID!
+  intensiscore__solution_sheets_id(filter: intensiscore__solution_sheets_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): intensiscore__solution_sheets
+  intensiscore__tags_id(filter: intensiscore__tags_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): intensiscore__tags
+}
+
+type intensiscore__solution_sheets_intensiscore__tags_mutated {
+  key: ID!
+  event: EventEnum
+  data: intensiscore__solution_sheets_intensiscore__tags
+}
+
+type intensiscore__solution_sheets_mutated {
+  key: ID!
+  event: EventEnum
+  data: intensiscore__solution_sheets
 }
 
 type intensiscore__survey_results {
@@ -1431,6 +1464,19 @@ type intensiscore__survey_results_mutated {
   key: ID!
   event: EventEnum
   data: intensiscore__survey_results
+}
+
+type intensiscore__tags {
+  id: ID!
+  status: String
+  sort: Int
+  name: String
+}
+
+type intensiscore__tags_mutated {
+  key: ID!
+  event: EventEnum
+  data: intensiscore__tags
 }
 
 type server_info {
@@ -2186,6 +2232,38 @@ input hash_filter_operators {
   _nnull: Boolean
   _empty: Boolean
   _nempty: Boolean
+}
+
+input intensiscore__solution_sheets_filter {
+  id: number_filter_operators
+  status: string_filter_operators
+  sort: number_filter_operators
+  type: string_filter_operators
+  title: string_filter_operators
+  content: string_filter_operators
+  description: string_filter_operators
+  image: directus_files_filter
+  tags: intensiscore__solution_sheets_intensiscore__tags_filter
+  tags_func: count_function_filter_operators
+  _and: [intensiscore__solution_sheets_filter]
+  _or: [intensiscore__solution_sheets_filter]
+}
+
+input intensiscore__solution_sheets_intensiscore__tags_filter {
+  id: number_filter_operators
+  intensiscore__solution_sheets_id: intensiscore__solution_sheets_filter
+  intensiscore__tags_id: intensiscore__tags_filter
+  _and: [intensiscore__solution_sheets_intensiscore__tags_filter]
+  _or: [intensiscore__solution_sheets_intensiscore__tags_filter]
+}
+
+input intensiscore__tags_filter {
+  id: number_filter_operators
+  status: string_filter_operators
+  sort: number_filter_operators
+  name: string_filter_operators
+  _and: [intensiscore__tags_filter]
+  _or: [intensiscore__tags_filter]
 }
 
 input number_filter_operators {

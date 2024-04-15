@@ -7,10 +7,22 @@ type Query {
   directus_sync_id_map_by_id(id: ID!, version: String): directus_sync_id_map
   directus_sync_id_map_aggregated(groupBy: [String], filter: directus_sync_id_map_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [directus_sync_id_map_aggregated!]!
   directus_sync_id_map_by_version(version: String!, id: ID!): version_directus_sync_id_map
+  intensiscore__tags(filter: intensiscore__tags_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [intensiscore__tags!]!
+  intensiscore__tags_by_id(id: ID!, version: String): intensiscore__tags
+  intensiscore__tags_aggregated(groupBy: [String], filter: intensiscore__tags_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [intensiscore__tags_aggregated!]!
+  intensiscore__tags_by_version(version: String!, id: ID!): version_intensiscore__tags
   intensiscore__pages(filter: intensiscore__pages_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [intensiscore__pages!]!
   intensiscore__pages_by_id(id: ID!, version: String): intensiscore__pages
   intensiscore__pages_aggregated(groupBy: [String], filter: intensiscore__pages_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [intensiscore__pages_aggregated!]!
   intensiscore__pages_by_version(version: String!, id: ID!): version_intensiscore__pages
+  intensiscore__solution_sheets_intensiscore__tags(filter: intensiscore__solution_sheets_intensiscore__tags_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [intensiscore__solution_sheets_intensiscore__tags!]!
+  intensiscore__solution_sheets_intensiscore__tags_by_id(id: ID!, version: String): intensiscore__solution_sheets_intensiscore__tags
+  intensiscore__solution_sheets_intensiscore__tags_aggregated(groupBy: [String], filter: intensiscore__solution_sheets_intensiscore__tags_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [intensiscore__solution_sheets_intensiscore__tags_aggregated!]!
+  intensiscore__solution_sheets_intensiscore__tags_by_version(version: String!, id: ID!): version_intensiscore__solution_sheets_intensiscore__tags
+  intensiscore__solution_sheets(filter: intensiscore__solution_sheets_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [intensiscore__solution_sheets!]!
+  intensiscore__solution_sheets_by_id(id: ID!, version: String): intensiscore__solution_sheets
+  intensiscore__solution_sheets_aggregated(groupBy: [String], filter: intensiscore__solution_sheets_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [intensiscore__solution_sheets_aggregated!]!
+  intensiscore__solution_sheets_by_version(version: String!, id: ID!): version_intensiscore__solution_sheets
 }
 
 type Mutation {
@@ -18,23 +30,44 @@ type Mutation {
   create_intensiscore__survey_results_item(data: create_intensiscore__survey_results_input!): intensiscore__survey_results
   create_directus_sync_id_map_items(filter: directus_sync_id_map_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_directus_sync_id_map_input!]): [directus_sync_id_map!]!
   create_directus_sync_id_map_item(data: create_directus_sync_id_map_input!): directus_sync_id_map
+  create_intensiscore__tags_items(filter: intensiscore__tags_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_intensiscore__tags_input!]): [intensiscore__tags!]!
+  create_intensiscore__tags_item(data: create_intensiscore__tags_input!): intensiscore__tags
   create_intensiscore__pages_items(filter: intensiscore__pages_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_intensiscore__pages_input!]): [intensiscore__pages!]!
   create_intensiscore__pages_item(data: create_intensiscore__pages_input!): intensiscore__pages
+  create_intensiscore__solution_sheets_intensiscore__tags_items(filter: intensiscore__solution_sheets_intensiscore__tags_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_intensiscore__solution_sheets_intensiscore__tags_input!]): [intensiscore__solution_sheets_intensiscore__tags!]!
+  create_intensiscore__solution_sheets_intensiscore__tags_item(data: create_intensiscore__solution_sheets_intensiscore__tags_input!): intensiscore__solution_sheets_intensiscore__tags
+  create_intensiscore__solution_sheets_items(filter: intensiscore__solution_sheets_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_intensiscore__solution_sheets_input!]): [intensiscore__solution_sheets!]!
+  create_intensiscore__solution_sheets_item(data: create_intensiscore__solution_sheets_input!): intensiscore__solution_sheets
   update_intensiscore__survey_results_items(filter: intensiscore__survey_results_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_intensiscore__survey_results_input!): [intensiscore__survey_results!]!
   update_intensiscore__survey_results_batch(filter: intensiscore__survey_results_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_intensiscore__survey_results_input!]): [intensiscore__survey_results!]!
   update_intensiscore__survey_results_item(id: ID!, data: update_intensiscore__survey_results_input!): intensiscore__survey_results
   update_directus_sync_id_map_items(filter: directus_sync_id_map_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_directus_sync_id_map_input!): [directus_sync_id_map!]!
   update_directus_sync_id_map_batch(filter: directus_sync_id_map_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_directus_sync_id_map_input!]): [directus_sync_id_map!]!
   update_directus_sync_id_map_item(id: ID!, data: update_directus_sync_id_map_input!): directus_sync_id_map
+  update_intensiscore__tags_items(filter: intensiscore__tags_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_intensiscore__tags_input!): [intensiscore__tags!]!
+  update_intensiscore__tags_batch(filter: intensiscore__tags_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_intensiscore__tags_input!]): [intensiscore__tags!]!
+  update_intensiscore__tags_item(id: ID!, data: update_intensiscore__tags_input!): intensiscore__tags
   update_intensiscore__pages_items(filter: intensiscore__pages_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_intensiscore__pages_input!): [intensiscore__pages!]!
   update_intensiscore__pages_batch(filter: intensiscore__pages_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_intensiscore__pages_input!]): [intensiscore__pages!]!
   update_intensiscore__pages_item(id: ID!, data: update_intensiscore__pages_input!): intensiscore__pages
+  update_intensiscore__solution_sheets_intensiscore__tags_items(filter: intensiscore__solution_sheets_intensiscore__tags_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_intensiscore__solution_sheets_intensiscore__tags_input!): [intensiscore__solution_sheets_intensiscore__tags!]!
+  update_intensiscore__solution_sheets_intensiscore__tags_batch(filter: intensiscore__solution_sheets_intensiscore__tags_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_intensiscore__solution_sheets_intensiscore__tags_input!]): [intensiscore__solution_sheets_intensiscore__tags!]!
+  update_intensiscore__solution_sheets_intensiscore__tags_item(id: ID!, data: update_intensiscore__solution_sheets_intensiscore__tags_input!): intensiscore__solution_sheets_intensiscore__tags
+  update_intensiscore__solution_sheets_items(filter: intensiscore__solution_sheets_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_intensiscore__solution_sheets_input!): [intensiscore__solution_sheets!]!
+  update_intensiscore__solution_sheets_batch(filter: intensiscore__solution_sheets_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_intensiscore__solution_sheets_input!]): [intensiscore__solution_sheets!]!
+  update_intensiscore__solution_sheets_item(id: ID!, data: update_intensiscore__solution_sheets_input!): intensiscore__solution_sheets
   delete_intensiscore__survey_results_items(ids: [ID]!): delete_many
   delete_intensiscore__survey_results_item(id: ID!): delete_one
   delete_directus_sync_id_map_items(ids: [ID]!): delete_many
   delete_directus_sync_id_map_item(id: ID!): delete_one
+  delete_intensiscore__tags_items(ids: [ID]!): delete_many
+  delete_intensiscore__tags_item(id: ID!): delete_one
   delete_intensiscore__pages_items(ids: [ID]!): delete_many
   delete_intensiscore__pages_item(id: ID!): delete_one
+  delete_intensiscore__solution_sheets_intensiscore__tags_items(ids: [ID]!): delete_many
+  delete_intensiscore__solution_sheets_intensiscore__tags_item(id: ID!): delete_one
+  delete_intensiscore__solution_sheets_items(ids: [ID]!): delete_many
+  delete_intensiscore__solution_sheets_item(id: ID!): delete_one
 }
 
 type Subscription {
@@ -58,7 +91,10 @@ type Subscription {
   directus_translations_mutated(event: EventEnum): directus_translations_mutated
   directus_versions_mutated(event: EventEnum): directus_versions_mutated
   directus_sync_id_map_mutated(event: EventEnum): directus_sync_id_map_mutated
+  intensiscore__tags_mutated(event: EventEnum): intensiscore__tags_mutated
   intensiscore__pages_mutated(event: EventEnum): intensiscore__pages_mutated
+  intensiscore__solution_sheets_intensiscore__tags_mutated(event: EventEnum): intensiscore__solution_sheets_intensiscore__tags_mutated
+  intensiscore__solution_sheets_mutated(event: EventEnum): intensiscore__solution_sheets_mutated
 }
 
 """The `Boolean` scalar type represents `true` or `false`."""
@@ -612,9 +648,8 @@ type intensiscore__pages {
   id: ID!
   status: String
   title: String
-  content: JSON
-  content_func: count_functions
   slug: String
+  content: String
 }
 
 type intensiscore__pages_aggregated {
@@ -634,8 +669,8 @@ type intensiscore__pages_aggregated_count {
   id: Int
   status: Int
   title: Int
-  content: Int
   slug: Int
+  content: Int
 }
 
 type intensiscore__pages_aggregated_fields {
@@ -646,6 +681,92 @@ type intensiscore__pages_mutated {
   key: ID!
   event: EventEnum
   data: intensiscore__pages
+}
+
+type intensiscore__solution_sheets {
+  id: ID!
+  status: String
+  sort: Int
+  type: String
+  title: String
+  content: String
+  description: String
+  image(filter: directus_files_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_files
+  tags(filter: intensiscore__solution_sheets_intensiscore__tags_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [intensiscore__solution_sheets_intensiscore__tags]
+  tags_func: count_functions
+}
+
+type intensiscore__solution_sheets_aggregated {
+  group: JSON
+  countAll: Int
+  count: intensiscore__solution_sheets_aggregated_count
+  countDistinct: intensiscore__solution_sheets_aggregated_count
+  avg: intensiscore__solution_sheets_aggregated_fields
+  sum: intensiscore__solution_sheets_aggregated_fields
+  avgDistinct: intensiscore__solution_sheets_aggregated_fields
+  sumDistinct: intensiscore__solution_sheets_aggregated_fields
+  min: intensiscore__solution_sheets_aggregated_fields
+  max: intensiscore__solution_sheets_aggregated_fields
+}
+
+type intensiscore__solution_sheets_aggregated_count {
+  id: Int
+  status: Int
+  sort: Int
+  type: Int
+  title: Int
+  content: Int
+  description: Int
+  image: Int
+  tags: Int
+}
+
+type intensiscore__solution_sheets_aggregated_fields {
+  id: Float
+  sort: Float
+}
+
+type intensiscore__solution_sheets_intensiscore__tags {
+  id: ID!
+  intensiscore__solution_sheets_id(filter: intensiscore__solution_sheets_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): intensiscore__solution_sheets
+  intensiscore__tags_id(filter: intensiscore__tags_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): intensiscore__tags
+}
+
+type intensiscore__solution_sheets_intensiscore__tags_aggregated {
+  group: JSON
+  countAll: Int
+  count: intensiscore__solution_sheets_intensiscore__tags_aggregated_count
+  countDistinct: intensiscore__solution_sheets_intensiscore__tags_aggregated_count
+  avg: intensiscore__solution_sheets_intensiscore__tags_aggregated_fields
+  sum: intensiscore__solution_sheets_intensiscore__tags_aggregated_fields
+  avgDistinct: intensiscore__solution_sheets_intensiscore__tags_aggregated_fields
+  sumDistinct: intensiscore__solution_sheets_intensiscore__tags_aggregated_fields
+  min: intensiscore__solution_sheets_intensiscore__tags_aggregated_fields
+  max: intensiscore__solution_sheets_intensiscore__tags_aggregated_fields
+}
+
+type intensiscore__solution_sheets_intensiscore__tags_aggregated_count {
+  id: Int
+  intensiscore__solution_sheets_id: Int
+  intensiscore__tags_id: Int
+}
+
+type intensiscore__solution_sheets_intensiscore__tags_aggregated_fields {
+  id: Float
+  intensiscore__solution_sheets_id: Float
+  intensiscore__tags_id: Float
+}
+
+type intensiscore__solution_sheets_intensiscore__tags_mutated {
+  key: ID!
+  event: EventEnum
+  data: intensiscore__solution_sheets_intensiscore__tags
+}
+
+type intensiscore__solution_sheets_mutated {
+  key: ID!
+  event: EventEnum
+  data: intensiscore__solution_sheets
 }
 
 type intensiscore__survey_results {
@@ -686,6 +807,44 @@ type intensiscore__survey_results_mutated {
   data: intensiscore__survey_results
 }
 
+type intensiscore__tags {
+  id: ID!
+  status: String
+  sort: Int
+  name: String
+}
+
+type intensiscore__tags_aggregated {
+  group: JSON
+  countAll: Int
+  count: intensiscore__tags_aggregated_count
+  countDistinct: intensiscore__tags_aggregated_count
+  avg: intensiscore__tags_aggregated_fields
+  sum: intensiscore__tags_aggregated_fields
+  avgDistinct: intensiscore__tags_aggregated_fields
+  sumDistinct: intensiscore__tags_aggregated_fields
+  min: intensiscore__tags_aggregated_fields
+  max: intensiscore__tags_aggregated_fields
+}
+
+type intensiscore__tags_aggregated_count {
+  id: Int
+  status: Int
+  sort: Int
+  name: Int
+}
+
+type intensiscore__tags_aggregated_fields {
+  id: Float
+  sort: Float
+}
+
+type intensiscore__tags_mutated {
+  key: ID!
+  event: EventEnum
+  data: intensiscore__tags
+}
+
 """"""
 type version_directus_sync_id_map {
   id: ID
@@ -700,8 +859,28 @@ type version_intensiscore__pages {
   id: ID
   status: String
   title: String
-  content: JSON
   slug: String
+  content: String
+}
+
+""""""
+type version_intensiscore__solution_sheets {
+  id: ID
+  status: String
+  sort: Int
+  type: String
+  title: String
+  content: String
+  description: String
+  image: JSON
+  tags: JSON
+}
+
+""""""
+type version_intensiscore__solution_sheets_intensiscore__tags {
+  id: ID
+  intensiscore__solution_sheets_id: JSON
+  intensiscore__tags_id: JSON
 }
 
 """"""
@@ -710,6 +889,14 @@ type version_intensiscore__survey_results {
   date_created: Date
   content: String
   survey_schema_id: Int
+}
+
+""""""
+type version_intensiscore__tags {
+  id: ID
+  status: String
+  sort: Int
+  name: String
 }
 
 input big_int_filter_operators {
@@ -738,6 +925,50 @@ input count_function_filter_operators {
   count: number_filter_operators
 }
 
+input create_directus_files_input {
+  id: ID
+  storage: String!
+  filename_disk: String
+  filename_download: String!
+  title: String
+  type: String
+  folder: create_directus_folders_input
+  uploaded_by: create_directus_users_input
+  uploaded_on: Date
+  modified_by: create_directus_users_input
+  modified_on: Date
+  charset: String
+  filesize: GraphQLBigInt
+  width: Int
+  height: Int
+  duration: Int
+  embed: String
+  description: String
+  location: String
+  tags: JSON
+  metadata: JSON
+  focal_point_x: Int
+  focal_point_y: Int
+}
+
+input create_directus_folders_input {
+  id: ID
+  name: String!
+  parent: create_directus_folders_input
+}
+
+input create_directus_roles_input {
+  id: ID
+  name: String!
+  icon: String
+  description: String
+  ip_access: [String]
+  enforce_tfa: Boolean!
+  admin_access: Boolean!
+  app_access: Boolean
+  users: [create_directus_users_input]
+}
+
 input create_directus_sync_id_map_input {
   id: ID
   table: String!
@@ -746,12 +977,59 @@ input create_directus_sync_id_map_input {
   created_at: Date
 }
 
+input create_directus_users_input {
+  id: ID
+  first_name: String
+  last_name: String
+  email: String
+  password: Hash
+  location: String
+  title: String
+  description: String
+  tags: JSON
+  avatar: create_directus_files_input
+  language: String
+  tfa_secret: Hash
+  status: String
+  role: create_directus_roles_input
+  token: Hash
+  last_access: Date
+  last_page: String
+  provider: String
+  external_identifier: String
+  auth_data: JSON
+  email_notifications: Boolean
+  appearance: String
+  theme_dark: String
+  theme_light: String
+  theme_light_overrides: JSON
+  theme_dark_overrides: JSON
+}
+
 input create_intensiscore__pages_input {
   id: ID
   status: String
   title: String
-  content: JSON
   slug: String
+  content: String
+}
+
+input create_intensiscore__solution_sheets_input {
+  id: ID
+  status: String
+  sort: Int
+  type: String
+  title: String
+  content: String
+  description: String
+  image: create_directus_files_input
+  tags: [create_intensiscore__solution_sheets_intensiscore__tags_input]
+}
+
+input create_intensiscore__solution_sheets_intensiscore__tags_input {
+  id: ID
+  intensiscore__solution_sheets_id: create_intensiscore__solution_sheets_input
+  intensiscore__tags_id: create_intensiscore__tags_input
 }
 
 input create_intensiscore__survey_results_input {
@@ -759,6 +1037,13 @@ input create_intensiscore__survey_results_input {
   date_created: Date
   content: String
   survey_schema_id: Int
+}
+
+input create_intensiscore__tags_input {
+  id: ID
+  status: String
+  sort: Int
+  name: String
 }
 
 input date_filter_operators {
@@ -1027,11 +1312,33 @@ input intensiscore__pages_filter {
   id: number_filter_operators
   status: string_filter_operators
   title: string_filter_operators
-  content: string_filter_operators
-  content_func: count_function_filter_operators
   slug: string_filter_operators
+  content: string_filter_operators
   _and: [intensiscore__pages_filter]
   _or: [intensiscore__pages_filter]
+}
+
+input intensiscore__solution_sheets_filter {
+  id: number_filter_operators
+  status: string_filter_operators
+  sort: number_filter_operators
+  type: string_filter_operators
+  title: string_filter_operators
+  content: string_filter_operators
+  description: string_filter_operators
+  image: directus_files_filter
+  tags: intensiscore__solution_sheets_intensiscore__tags_filter
+  tags_func: count_function_filter_operators
+  _and: [intensiscore__solution_sheets_filter]
+  _or: [intensiscore__solution_sheets_filter]
+}
+
+input intensiscore__solution_sheets_intensiscore__tags_filter {
+  id: number_filter_operators
+  intensiscore__solution_sheets_id: intensiscore__solution_sheets_filter
+  intensiscore__tags_id: intensiscore__tags_filter
+  _and: [intensiscore__solution_sheets_intensiscore__tags_filter]
+  _or: [intensiscore__solution_sheets_intensiscore__tags_filter]
 }
 
 input intensiscore__survey_results_filter {
@@ -1042,6 +1349,15 @@ input intensiscore__survey_results_filter {
   survey_schema_id: number_filter_operators
   _and: [intensiscore__survey_results_filter]
   _or: [intensiscore__survey_results_filter]
+}
+
+input intensiscore__tags_filter {
+  id: number_filter_operators
+  status: string_filter_operators
+  sort: number_filter_operators
+  name: string_filter_operators
+  _and: [intensiscore__tags_filter]
+  _or: [intensiscore__tags_filter]
 }
 
 input number_filter_operators {
@@ -1081,6 +1397,50 @@ input string_filter_operators {
   _nempty: Boolean
 }
 
+input update_directus_files_input {
+  id: ID
+  storage: String
+  filename_disk: String
+  filename_download: String
+  title: String
+  type: String
+  folder: update_directus_folders_input
+  uploaded_by: update_directus_users_input
+  uploaded_on: Date
+  modified_by: update_directus_users_input
+  modified_on: Date
+  charset: String
+  filesize: GraphQLBigInt
+  width: Int
+  height: Int
+  duration: Int
+  embed: String
+  description: String
+  location: String
+  tags: JSON
+  metadata: JSON
+  focal_point_x: Int
+  focal_point_y: Int
+}
+
+input update_directus_folders_input {
+  id: ID
+  name: String
+  parent: update_directus_folders_input
+}
+
+input update_directus_roles_input {
+  id: ID
+  name: String
+  icon: String
+  description: String
+  ip_access: [String]
+  enforce_tfa: Boolean
+  admin_access: Boolean
+  app_access: Boolean
+  users: [update_directus_users_input]
+}
+
 input update_directus_sync_id_map_input {
   id: ID
   table: String
@@ -1089,12 +1449,59 @@ input update_directus_sync_id_map_input {
   created_at: Date
 }
 
+input update_directus_users_input {
+  id: ID
+  first_name: String
+  last_name: String
+  email: String
+  password: Hash
+  location: String
+  title: String
+  description: String
+  tags: JSON
+  avatar: update_directus_files_input
+  language: String
+  tfa_secret: Hash
+  status: String
+  role: update_directus_roles_input
+  token: Hash
+  last_access: Date
+  last_page: String
+  provider: String
+  external_identifier: String
+  auth_data: JSON
+  email_notifications: Boolean
+  appearance: String
+  theme_dark: String
+  theme_light: String
+  theme_light_overrides: JSON
+  theme_dark_overrides: JSON
+}
+
 input update_intensiscore__pages_input {
   id: ID
   status: String
   title: String
-  content: JSON
   slug: String
+  content: String
+}
+
+input update_intensiscore__solution_sheets_input {
+  id: ID
+  status: String
+  sort: Int
+  type: String
+  title: String
+  content: String
+  description: String
+  image: update_directus_files_input
+  tags: [update_intensiscore__solution_sheets_intensiscore__tags_input]
+}
+
+input update_intensiscore__solution_sheets_intensiscore__tags_input {
+  id: ID
+  intensiscore__solution_sheets_id: update_intensiscore__solution_sheets_input
+  intensiscore__tags_id: update_intensiscore__tags_input
 }
 
 input update_intensiscore__survey_results_input {
@@ -1102,4 +1509,11 @@ input update_intensiscore__survey_results_input {
   date_created: Date
   content: String
   survey_schema_id: Int
+}
+
+input update_intensiscore__tags_input {
+  id: ID
+  status: String
+  sort: Int
+  name: String
 }

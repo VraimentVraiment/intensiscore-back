@@ -1,0 +1,25 @@
+{
+  "collection": "intensiscore__solution_sheets_intensiscore__tags",
+  "field": "intensiscore__tags_id",
+  "related_collection": "intensiscore__tags",
+  "meta": {
+    "junction_field": "intensiscore__solution_sheets_id",
+    "many_collection": "intensiscore__solution_sheets_intensiscore__tags",
+    "many_field": "intensiscore__tags_id",
+    "one_allowed_collections": null,
+    "one_collection": "intensiscore__tags",
+    "one_collection_field": null,
+    "one_deselect_action": "nullify",
+    "one_field": null,
+    "sort_field": null
+  },
+  "schema": {
+    "table": "intensiscore__solution_sheets_intensiscore__tags",
+    "column": "intensiscore__tags_id",
+    "foreign_key_table": "intensiscore__tags",
+    "foreign_key_column": "id",
+    "constraint_name": "intensiscore__solution_sheets_intensiscore__6007e767_foreign",
+    "on_update": "NO ACTION",
+    "on_delete": "SET NULL"
+  }
+}

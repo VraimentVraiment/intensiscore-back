@@ -2,30 +2,6 @@
   {
     "role": null,
     "collection": "intensiscore__pages",
-    "action": "create",
-    "permissions": {},
-    "validation": {},
-    "presets": null,
-    "fields": [
-      "*"
-    ],
-    "_syncId": "413a1289-c32f-45bd-805a-fe73480ef7d2"
-  },
-  {
-    "role": null,
-    "collection": "intensiscore__pages",
-    "action": "delete",
-    "permissions": {},
-    "validation": {},
-    "presets": null,
-    "fields": [
-      "*"
-    ],
-    "_syncId": "0c7f3295-9843-428e-a50b-c6a4e21a38b0"
-  },
-  {
-    "role": null,
-    "collection": "intensiscore__pages",
     "action": "read",
     "permissions": {},
     "validation": {},
@@ -49,15 +25,51 @@
   },
   {
     "role": null,
-    "collection": "intensiscore__pages",
-    "action": "update",
+    "collection": "intensiscore__solution_sheets_intensiscore__tags",
+    "action": "read",
     "permissions": {},
     "validation": {},
     "presets": null,
     "fields": [
       "*"
     ],
-    "_syncId": "45ce5079-516c-4daa-978a-afd1296d6b97"
+    "_syncId": "44312b7c-3450-4a82-9b66-1e9a19d3636c"
+  },
+  {
+    "role": null,
+    "collection": "intensiscore__solution_sheets_intensiscore__tags",
+    "action": "share",
+    "permissions": {},
+    "validation": {},
+    "presets": null,
+    "fields": [
+      "*"
+    ],
+    "_syncId": "d381b3af-d0ca-4afa-9e1e-6b68754db012"
+  },
+  {
+    "role": null,
+    "collection": "intensiscore__solution_sheets",
+    "action": "read",
+    "permissions": {},
+    "validation": {},
+    "presets": null,
+    "fields": [
+      "*"
+    ],
+    "_syncId": "0318b90d-4eb1-489e-a7b8-5939beb1405c"
+  },
+  {
+    "role": null,
+    "collection": "intensiscore__solution_sheets",
+    "action": "share",
+    "permissions": {},
+    "validation": {},
+    "presets": null,
+    "fields": [
+      "*"
+    ],
+    "_syncId": "defd3903-7c6f-4c0c-be68-e7e05b9bcbcb"
   },
   {
     "role": null,
@@ -82,5 +94,29 @@
       "id"
     ],
     "_syncId": "22c16b94-2c68-4e76-b937-bc4ad1588be1"
+  },
+  {
+    "role": null,
+    "collection": "intensiscore__tags",
+    "action": "read",
+    "permissions": {},
+    "validation": {},
+    "presets": null,
+    "fields": [
+      "*"
+    ],
+    "_syncId": "1ee61cfc-ecf5-4eda-803e-77ed19291b98"
+  },
+  {
+    "role": null,
+    "collection": "intensiscore__tags",
+    "action": "share",
+    "permissions": {},
+    "validation": {},
+    "presets": null,
+    "fields": [
+      "*"
+    ],
+    "_syncId": "b807c1e9-377f-4c4e-b09d-4e6611907e32"
   }
 ]

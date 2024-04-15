@@ -1,9 +1,9 @@
 {
-  "collection": "intensiscore__pages",
+  "collection": "intensiscore__solution_sheets",
   "field": "content",
   "type": "text",
   "meta": {
-    "collection": "intensiscore__pages",
+    "collection": "intensiscore__solution_sheets",
     "conditions": null,
     "display": null,
     "display_options": null,
@@ -15,7 +15,7 @@
     "options": null,
     "readonly": false,
     "required": false,
-    "sort": 6,
+    "sort": 7,
     "special": null,
     "translations": null,
     "validation": null,
@@ -24,7 +24,7 @@
   },
   "schema": {
     "name": "content",
-    "table": "intensiscore__pages",
+    "table": "intensiscore__solution_sheets",
     "data_type": "text",
     "default_value": null,
     "max_length": null,

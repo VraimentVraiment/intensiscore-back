@@ -1,0 +1,29 @@
+{
+  "collection": "intensiscore__solution_sheets",
+  "field": "tags",
+  "type": "alias",
+  "meta": {
+    "collection": "intensiscore__solution_sheets",
+    "conditions": null,
+    "display": null,
+    "display_options": null,
+    "field": "tags",
+    "group": null,
+    "hidden": false,
+    "interface": "list-m2m",
+    "note": null,
+    "options": {
+      "template": "{{intensiscore__tags_id.name}}"
+    },
+    "readonly": false,
+    "required": false,
+    "sort": 9,
+    "special": [
+      "m2m"
+    ],
+    "translations": null,
+    "validation": null,
+    "validation_message": null,
+    "width": "full"
+  }
+}
