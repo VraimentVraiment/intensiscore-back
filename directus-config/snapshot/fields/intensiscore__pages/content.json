@@ -12,7 +12,27 @@
     "hidden": false,
     "interface": "input-rich-text-html",
     "note": null,
-    "options": null,
+    "options": {
+      "toolbar": [
+        "blockquote",
+        "bold",
+        "bullist",
+        "code",
+        "customImage",
+        "customLink",
+        "customMedia",
+        "fontsize",
+        "fullscreen",
+        "h1",
+        "h2",
+        "h3",
+        "hr",
+        "italic",
+        "numlist",
+        "removeformat",
+        "underline"
+      ]
+    },
     "readonly": false,
     "required": false,
     "sort": 6,

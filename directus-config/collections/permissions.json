@@ -87,13 +87,13 @@
     "role": null,
     "collection": "intensiscore__survey_results",
     "action": "read",
-    "permissions": null,
-    "validation": null,
+    "permissions": {},
+    "validation": {},
     "presets": null,
     "fields": [
-      "id"
+      "*"
     ],
-    "_syncId": "22c16b94-2c68-4e76-b937-bc4ad1588be1"
+    "_syncId": "d2e418c1-537a-4d01-9123-f57564b8835a"
   },
   {
     "role": null,

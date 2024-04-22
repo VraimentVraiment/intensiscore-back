@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engines": {
+    "node": ">=20.0.0"
+  },
   "scripts": {
     "start": "directus start",
     "migrate:latest": "directus database migrate:latest",
@@ -16,7 +19,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "directus": "^10.10.5",
+    "directus": "^10.10.7",
     "directus-extension-sync": "^1.1.2",
     "directus-sync": "^1.4.0",
     "pg": "^8.11.5"

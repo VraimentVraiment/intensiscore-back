@@ -20,3 +20,6 @@ config/qualification.*
 
 uploads/**
 temp_uploads
+
+
+ssh-sync.sh
