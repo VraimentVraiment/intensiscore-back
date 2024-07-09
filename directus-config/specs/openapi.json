@@ -3,7 +3,7 @@
   "info": {
     "title": "Dynamic API Specification",
     "description": "This is a dynamically generated API specification for all endpoints existing on the current project.",
-    "version": "10.10.7"
+    "version": "10.13.0"
   },
   "servers": [
     {
@@ -3697,401 +3697,6 @@
         ]
       }
     },
-    "/files": {
-      "get": {
-        "summary": "List Files",
-        "description": "List the files.",
-        "tags": [
-          "Files"
-        ],
-        "operationId": "getFiles",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/Fields"
-          },
-          {
-            "$ref": "#/components/parameters/Limit"
-          },
-          {
-            "$ref": "#/components/parameters/Offset"
-          },
-          {
-            "$ref": "#/components/parameters/Sort"
-          },
-          {
-            "$ref": "#/components/parameters/Filter"
-          },
-          {
-            "$ref": "#/components/parameters/Search"
-          },
-          {
-            "$ref": "#/components/parameters/Meta"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "data": {
-                      "type": "array",
-                      "items": {
-                        "$ref": "#/components/schemas/Files"
-                      }
-                    },
-                    "meta": {
-                      "$ref": "#/components/schemas/x-metadata"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "$ref": "#/components/responses/UnauthorizedError"
-          }
-        }
-      },
-      "post": {
-        "summary": "Create a File",
-        "description": "Create a new file",
-        "tags": [
-          "Files"
-        ],
-        "operationId": "createFile",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "data": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Successful request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "data": {
-                      "$ref": "#/components/schemas/Files"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "$ref": "#/components/responses/UnauthorizedError"
-          }
-        }
-      },
-      "patch": {
-        "summary": "Update Multiple Files",
-        "description": "Update multiple files at the same time.",
-        "tags": [
-          "Files"
-        ],
-        "operationId": "updateFiles",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/Fields"
-          },
-          {
-            "$ref": "#/components/parameters/Limit"
-          },
-          {
-            "$ref": "#/components/parameters/Meta"
-          },
-          {
-            "$ref": "#/components/parameters/Offset"
-          },
-          {
-            "$ref": "#/components/parameters/Sort"
-          },
-          {
-            "$ref": "#/components/parameters/Filter"
-          },
-          {
-            "$ref": "#/components/parameters/Search"
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "data": {
-                    "type": "object",
-                    "properties": {
-                      "data": {
-                        "type": "string"
-                      }
-                    }
-                  },
-                  "keys": {
-                    "type": "array",
-                    "items": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Successful request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "data": {
-                      "type": "array",
-                      "items": {
-                        "$ref": "#/components/schemas/Files"
-                      }
-                    },
-                    "meta": {
-                      "$ref": "#/components/schemas/x-metadata"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "$ref": "#/components/responses/UnauthorizedError"
-          }
-        }
-      },
-      "delete": {
-        "summary": "Delete Multiple Files",
-        "description": "Delete multiple existing files.",
-        "tags": [
-          "Files"
-        ],
-        "operationId": "deleteFiles",
-        "responses": {
-          "200": {
-            "description": "Successful request"
-          },
-          "401": {
-            "$ref": "#/components/responses/UnauthorizedError"
-          }
-        }
-      }
-    },
-    "/files/{id}": {
-      "get": {
-        "summary": "Retrieve a Files",
-        "description": "Retrieve a single file by unique identifier.",
-        "tags": [
-          "Files"
-        ],
-        "operationId": "getFile",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/UUId"
-          },
-          {
-            "$ref": "#/components/parameters/Fields"
-          },
-          {
-            "$ref": "#/components/parameters/Meta"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "data": {
-                      "$ref": "#/components/schemas/Files"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "$ref": "#/components/responses/UnauthorizedError"
-          }
-        }
-      },
-      "patch": {
-        "summary": "Update a File",
-        "description": "Update an existing file, and/or replace it's file contents.",
-        "tags": [
-          "Files"
-        ],
-        "operationId": "updateFile",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/UUId"
-          },
-          {
-            "$ref": "#/components/parameters/Fields"
-          },
-          {
-            "$ref": "#/components/parameters/Meta"
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "multipart/data": {
-              "schema": {
-                "type": "object",
-                "required": [
-                  "file"
-                ],
-                "properties": {
-                  "title": {
-                    "description": "Title for the file. Is extracted from the filename on upload, but can be edited by the user.",
-                    "example": "User Avatar",
-                    "type": "string"
-                  },
-                  "filename_download": {
-                    "description": "Preferred filename when file is downloaded.",
-                    "type": "string"
-                  },
-                  "description": {
-                    "description": "Description for the file.",
-                    "type": "string",
-                    "nullable": true
-                  },
-                  "folder": {
-                    "description": "Virtual folder where this file resides in.",
-                    "example": null,
-                    "oneOf": [
-                      {
-                        "type": "string"
-                      },
-                      {
-                        "$ref": "#/components/schemas/Folders"
-                      }
-                    ],
-                    "nullable": true
-                  },
-                  "tags": {
-                    "description": "Tags for the file. Is automatically populated based on Exif data for images.",
-                    "type": "array",
-                    "nullable": true,
-                    "items": {
-                      "type": "string"
-                    }
-                  },
-                  "file": {
-                    "description": "File contents.",
-                    "format": "binary"
-                  }
-                }
-              }
-            },
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "title": {
-                    "description": "Title for the file. Is extracted from the filename on upload, but can be edited by the user.",
-                    "example": "User Avatar",
-                    "type": "string"
-                  },
-                  "filename_download": {
-                    "description": "Preferred filename when file is downloaded.",
-                    "type": "string"
-                  },
-                  "description": {
-                    "description": "Description for the file.",
-                    "type": "string",
-                    "nullable": true
-                  },
-                  "folder": {
-                    "description": "Virtual folder where this file resides in.",
-                    "example": null,
-                    "oneOf": [
-                      {
-                        "type": "string"
-                      },
-                      {
-                        "$ref": "#/components/schemas/Folders"
-                      }
-                    ],
-                    "nullable": true
-                  },
-                  "tags": {
-                    "description": "Tags for the file. Is automatically populated based on Exif data for images.",
-                    "type": "array",
-                    "nullable": true,
-                    "items": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Successful request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "data": {
-                      "$ref": "#/components/schemas/Files"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "$ref": "#/components/responses/UnauthorizedError"
-          }
-        }
-      },
-      "delete": {
-        "summary": "Delete a File",
-        "description": "Delete an existing file.",
-        "tags": [
-          "Files"
-        ],
-        "operationId": "deleteFile",
-        "responses": {
-          "200": {
-            "description": "Successful request"
-          },
-          "401": {
-            "$ref": "#/components/responses/UnauthorizedError"
-          }
-        },
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/UUId"
-          }
-        ]
-      }
-    },
     "/presets": {
       "get": {
         "tags": [
@@ -4592,6 +4197,401 @@
         "parameters": [
           {
             "$ref": "#/components/parameters/Id"
+          }
+        ]
+      }
+    },
+    "/files": {
+      "get": {
+        "summary": "List Files",
+        "description": "List the files.",
+        "tags": [
+          "Files"
+        ],
+        "operationId": "getFiles",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Fields"
+          },
+          {
+            "$ref": "#/components/parameters/Limit"
+          },
+          {
+            "$ref": "#/components/parameters/Offset"
+          },
+          {
+            "$ref": "#/components/parameters/Sort"
+          },
+          {
+            "$ref": "#/components/parameters/Filter"
+          },
+          {
+            "$ref": "#/components/parameters/Search"
+          },
+          {
+            "$ref": "#/components/parameters/Meta"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Files"
+                      }
+                    },
+                    "meta": {
+                      "$ref": "#/components/schemas/x-metadata"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a File",
+        "description": "Create a new file",
+        "tags": [
+          "Files"
+        ],
+        "operationId": "createFile",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/Files"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Update Multiple Files",
+        "description": "Update multiple files at the same time.",
+        "tags": [
+          "Files"
+        ],
+        "operationId": "updateFiles",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Fields"
+          },
+          {
+            "$ref": "#/components/parameters/Limit"
+          },
+          {
+            "$ref": "#/components/parameters/Meta"
+          },
+          {
+            "$ref": "#/components/parameters/Offset"
+          },
+          {
+            "$ref": "#/components/parameters/Sort"
+          },
+          {
+            "$ref": "#/components/parameters/Filter"
+          },
+          {
+            "$ref": "#/components/parameters/Search"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "type": "object",
+                    "properties": {
+                      "data": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "keys": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Files"
+                      }
+                    },
+                    "meta": {
+                      "$ref": "#/components/schemas/x-metadata"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete Multiple Files",
+        "description": "Delete multiple existing files.",
+        "tags": [
+          "Files"
+        ],
+        "operationId": "deleteFiles",
+        "responses": {
+          "200": {
+            "description": "Successful request"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          }
+        }
+      }
+    },
+    "/files/{id}": {
+      "get": {
+        "summary": "Retrieve a Files",
+        "description": "Retrieve a single file by unique identifier.",
+        "tags": [
+          "Files"
+        ],
+        "operationId": "getFile",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/UUId"
+          },
+          {
+            "$ref": "#/components/parameters/Fields"
+          },
+          {
+            "$ref": "#/components/parameters/Meta"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/Files"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Update a File",
+        "description": "Update an existing file, and/or replace it's file contents.",
+        "tags": [
+          "Files"
+        ],
+        "operationId": "updateFile",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/UUId"
+          },
+          {
+            "$ref": "#/components/parameters/Fields"
+          },
+          {
+            "$ref": "#/components/parameters/Meta"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/data": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "file"
+                ],
+                "properties": {
+                  "title": {
+                    "description": "Title for the file. Is extracted from the filename on upload, but can be edited by the user.",
+                    "example": "User Avatar",
+                    "type": "string"
+                  },
+                  "filename_download": {
+                    "description": "Preferred filename when file is downloaded.",
+                    "type": "string"
+                  },
+                  "description": {
+                    "description": "Description for the file.",
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "folder": {
+                    "description": "Virtual folder where this file resides in.",
+                    "example": null,
+                    "oneOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "$ref": "#/components/schemas/Folders"
+                      }
+                    ],
+                    "nullable": true
+                  },
+                  "tags": {
+                    "description": "Tags for the file. Is automatically populated based on Exif data for images.",
+                    "type": "array",
+                    "nullable": true,
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "file": {
+                    "description": "File contents.",
+                    "format": "binary"
+                  }
+                }
+              }
+            },
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "description": "Title for the file. Is extracted from the filename on upload, but can be edited by the user.",
+                    "example": "User Avatar",
+                    "type": "string"
+                  },
+                  "filename_download": {
+                    "description": "Preferred filename when file is downloaded.",
+                    "type": "string"
+                  },
+                  "description": {
+                    "description": "Description for the file.",
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "folder": {
+                    "description": "Virtual folder where this file resides in.",
+                    "example": null,
+                    "oneOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "$ref": "#/components/schemas/Folders"
+                      }
+                    ],
+                    "nullable": true
+                  },
+                  "tags": {
+                    "description": "Tags for the file. Is automatically populated based on Exif data for images.",
+                    "type": "array",
+                    "nullable": true,
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/Files"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete a File",
+        "description": "Delete an existing file.",
+        "tags": [
+          "Files"
+        ],
+        "operationId": "deleteFile",
+        "responses": {
+          "200": {
+            "description": "Successful request"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/UUId"
           }
         ]
       }
@@ -5670,93 +5670,6 @@
         ]
       }
     },
-    "/settings": {
-      "get": {
-        "summary": "Retrieve Settings",
-        "description": "List the settings.",
-        "operationId": "getSettings",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/Limit"
-          },
-          {
-            "$ref": "#/components/parameters/Offset"
-          },
-          {
-            "$ref": "#/components/parameters/Meta"
-          },
-          {
-            "$ref": "#/components/parameters/Page"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "data": {
-                      "$ref": "#/components/schemas/Settings"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "$ref": "#/components/responses/UnauthorizedError"
-          },
-          "404": {
-            "$ref": "#/components/responses/NotFoundError"
-          }
-        },
-        "tags": [
-          "Settings"
-        ]
-      },
-      "patch": {
-        "summary": "Update Settings",
-        "description": "Update the settings",
-        "operationId": "updateSetting",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Successful request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "data": {
-                      "$ref": "#/components/schemas/Settings"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "$ref": "#/components/responses/UnauthorizedError"
-          },
-          "404": {
-            "$ref": "#/components/responses/NotFoundError"
-          }
-        },
-        "tags": [
-          "Settings"
-        ]
-      }
-    },
     "/relations": {
       "get": {
         "summary": "List Relations",
@@ -6032,6 +5945,93 @@
           {
             "$ref": "#/components/parameters/Id"
           }
+        ]
+      }
+    },
+    "/settings": {
+      "get": {
+        "summary": "Retrieve Settings",
+        "description": "List the settings.",
+        "operationId": "getSettings",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Limit"
+          },
+          {
+            "$ref": "#/components/parameters/Offset"
+          },
+          {
+            "$ref": "#/components/parameters/Meta"
+          },
+          {
+            "$ref": "#/components/parameters/Page"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/Settings"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        },
+        "tags": [
+          "Settings"
+        ]
+      },
+      "patch": {
+        "summary": "Update Settings",
+        "description": "Update the settings",
+        "operationId": "updateSetting",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/Settings"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        },
+        "tags": [
+          "Settings"
         ]
       }
     },
@@ -9605,6 +9605,393 @@
           }
         ]
       }
+    },
+    "/items/intensiscore__survey_results_secrets": {
+      "post": {
+        "summary": "Create an Item",
+        "description": "Create a new intensiscore__survey_results_secrets item.",
+        "tags": [
+          "Items",
+          "ItemsIntensiscoreSurveyResultsSecrets"
+        ],
+        "operationId": "createItemsIntensiscoreSurveyResultsSecrets",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Meta"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/ItemsIntensiscoreSurveyResultsSecrets"
+                    }
+                  },
+                  {
+                    "$ref": "#/components/schemas/ItemsIntensiscoreSurveyResultsSecrets"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "items": {
+                        "$ref": "#/components/schemas/ItemsIntensiscoreSurveyResultsSecrets"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          }
+        }
+      },
+      "get": {
+        "summary": "List Items",
+        "description": "List the intensiscore__survey_results_secrets items.",
+        "tags": [
+          "Items",
+          "ItemsIntensiscoreSurveyResultsSecrets"
+        ],
+        "operationId": "readItemsIntensiscoreSurveyResultsSecrets",
+        "security": [
+          {
+            "Auth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Fields"
+          },
+          {
+            "$ref": "#/components/parameters/Limit"
+          },
+          {
+            "$ref": "#/components/parameters/Meta"
+          },
+          {
+            "$ref": "#/components/parameters/Offset"
+          },
+          {
+            "$ref": "#/components/parameters/Sort"
+          },
+          {
+            "$ref": "#/components/parameters/Filter"
+          },
+          {
+            "$ref": "#/components/parameters/Search"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "$ref": "#/components/schemas/ItemsIntensiscoreSurveyResultsSecrets"
+                      }
+                    },
+                    "meta": {
+                      "$ref": "#/components/schemas/x-metadata"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Update Multiple Items",
+        "description": "Update multiple intensiscore__survey_results_secrets items at the same time.",
+        "tags": [
+          "Items",
+          "ItemsIntensiscoreSurveyResultsSecrets"
+        ],
+        "operationId": "updateItemsIntensiscoreSurveyResultsSecrets",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Fields"
+          },
+          {
+            "$ref": "#/components/parameters/Limit"
+          },
+          {
+            "$ref": "#/components/parameters/Meta"
+          },
+          {
+            "$ref": "#/components/parameters/Offset"
+          },
+          {
+            "$ref": "#/components/parameters/Sort"
+          },
+          {
+            "$ref": "#/components/parameters/Filter"
+          },
+          {
+            "$ref": "#/components/parameters/Search"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/ItemsIntensiscoreSurveyResultsSecrets"
+                    }
+                  },
+                  {
+                    "$ref": "#/components/schemas/ItemsIntensiscoreSurveyResultsSecrets"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "data": {
+                      "items": {
+                        "$ref": "#/components/schemas/ItemsIntensiscoreSurveyResultsSecrets"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete Multiple Items",
+        "description": "Delete multiple existing intensiscore__survey_results_secrets items.",
+        "tags": [
+          "Items",
+          "ItemsIntensiscoreSurveyResultsSecrets"
+        ],
+        "operationId": "deleteItemsIntensiscoreSurveyResultsSecrets",
+        "responses": {
+          "200": {
+            "description": "Successful request"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          }
+        },
+        "parameters": []
+      }
+    },
+    "/items/intensiscore__survey_results_secrets/{id}": {
+      "get": {
+        "summary": "Retrieve an Item",
+        "description": "Retrieve a single intensiscore__survey_results_secrets item by unique identifier.",
+        "tags": [
+          "Items",
+          "ItemsIntensiscoreSurveyResultsSecrets"
+        ],
+        "operationId": "readSingleItemsIntensiscoreSurveyResultsSecrets",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Fields"
+          },
+          {
+            "$ref": "#/components/parameters/Meta"
+          },
+          {
+            "$ref": "#/components/parameters/Version"
+          },
+          {
+            "name": "id",
+            "description": "Index of the item.",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "oneOf": [
+                {
+                  "type": "integer",
+                  "description": "Incremental index of the item.",
+                  "example": 1
+                },
+                {
+                  "type": "string",
+                  "description": "Unique identifier of the item.",
+                  "example": "8cbb43fe-4cdf-4991-8352-c461779cec02"
+                }
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "$ref": "#/components/schemas/ItemsIntensiscoreSurveyResultsSecrets"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Update an Item",
+        "description": "Update an existing intensiscore__survey_results_secrets item.",
+        "tags": [
+          "Items",
+          "ItemsIntensiscoreSurveyResultsSecrets"
+        ],
+        "operationId": "updateSingleItemsIntensiscoreSurveyResultsSecrets",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Fields"
+          },
+          {
+            "$ref": "#/components/parameters/Meta"
+          },
+          {
+            "name": "id",
+            "description": "Index of the item.",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "oneOf": [
+                {
+                  "type": "integer",
+                  "description": "Incremental index of the item.",
+                  "example": 1
+                },
+                {
+                  "type": "string",
+                  "description": "Unique identifier of the item.",
+                  "example": "8cbb43fe-4cdf-4991-8352-c461779cec02"
+                }
+              ]
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "$ref": "#/components/schemas/ItemsIntensiscoreSurveyResultsSecrets"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "$ref": "#/components/schemas/ItemsIntensiscoreSurveyResultsSecrets"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete an Item",
+        "description": "Delete an existing intensiscore__survey_results_secrets item.",
+        "tags": [
+          "Items",
+          "ItemsIntensiscoreSurveyResultsSecrets"
+        ],
+        "operationId": "deleteSingleItemsIntensiscoreSurveyResultsSecrets",
+        "responses": {
+          "200": {
+            "description": "Successful request"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "Index of the item.",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "oneOf": [
+                {
+                  "type": "integer",
+                  "description": "Incremental index of the item.",
+                  "example": 1
+                },
+                {
+                  "type": "string",
+                  "description": "Unique identifier of the item.",
+                  "example": "8cbb43fe-4cdf-4991-8352-c461779cec02"
+                }
+              ]
+            }
+          }
+        ]
+      }
     }
   },
   "tags": [
@@ -9671,14 +10058,14 @@
       "x-collection": "directus_permissions"
     },
     {
-      "name": "Files",
-      "description": "Files can be saved in any given location. Directus has a powerful assets endpoint that can be used to generate thumbnails for images on the fly.",
-      "x-collection": "directus_files"
-    },
-    {
       "name": "Presets",
       "description": "Presets hold the preferences of individual users of the platform. This allows Directus to show and maintain custom item listings for users of the app.",
       "x-collection": "directus_presets"
+    },
+    {
+      "name": "Files",
+      "description": "Files can be saved in any given location. Directus has a powerful assets endpoint that can be used to generate thumbnails for images on the fly.",
+      "x-collection": "directus_files"
     },
     {
       "name": "Users",
@@ -9696,14 +10083,14 @@
       "x-collection": "directus_webhooks"
     },
     {
-      "name": "Settings",
-      "description": "Settings control the way the platform works and acts.",
-      "x-collection": "directus_settings"
-    },
-    {
       "name": "Relations",
       "description": "What data is linked to what other data. Allows you to assign authors to articles, products to sales, and whatever other structures you can think of.",
       "x-collection": "directus_relations"
+    },
+    {
+      "name": "Settings",
+      "description": "Settings control the way the platform works and acts.",
+      "x-collection": "directus_settings"
     },
     {
       "name": "Flows",
@@ -9748,6 +10135,10 @@
     {
       "name": "ItemsIntensiscoreSolutionSheets",
       "x-collection": "intensiscore__solution_sheets"
+    },
+    {
+      "name": "ItemsIntensiscoreSurveyResultsSecrets",
+      "x-collection": "intensiscore__survey_results_secrets"
     }
   ],
   "components": {
@@ -9971,6 +10362,13 @@
           "focal_point_y": {
             "nullable": true,
             "type": "integer"
+          },
+          "tus_id": {
+            "nullable": true,
+            "type": "string"
+          },
+          "tus_data": {
+            "nullable": true
           }
         },
         "x-collection": "directus_files"
@@ -10913,6 +11311,63 @@
         },
         "x-collection": "directus_webhooks"
       },
+      "Relations": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "description": "Unique identifier for the relation.",
+            "example": 1,
+            "type": "integer"
+          },
+          "many_collection": {
+            "description": "Collection that has the field that holds the foreign key.",
+            "example": "directus_activity",
+            "type": "string"
+          },
+          "many_field": {
+            "description": "Foreign key. Field that holds the primary key of the related collection.",
+            "example": "user",
+            "type": "string"
+          },
+          "one_collection": {
+            "description": "Collection on the _one_ side of the relationship.",
+            "example": "directus_users",
+            "type": "string"
+          },
+          "one_field": {
+            "description": "Alias column that serves as the _one_ side of the relationship.",
+            "example": null,
+            "type": "string",
+            "nullable": true
+          },
+          "one_collection_field": {
+            "nullable": true,
+            "type": "string"
+          },
+          "one_allowed_collections": {
+            "nullable": true,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "junction_field": {
+            "description": "Field on the junction table that holds the many field of the related relation.",
+            "example": null,
+            "type": "string",
+            "nullable": true
+          },
+          "sort_field": {
+            "nullable": true,
+            "type": "string"
+          },
+          "one_deselect_action": {
+            "nullable": false,
+            "type": "string"
+          }
+        },
+        "x-collection": "directus_relations"
+      },
       "Settings": {
         "type": "object",
         "properties": {
@@ -11144,66 +11599,36 @@
           "report_feature_url": {
             "nullable": true,
             "type": "string"
+          },
+          "public_registration": {
+            "nullable": false,
+            "description": "$t:fields.directus_settings.public_registration_note",
+            "type": "boolean"
+          },
+          "public_registration_verify_email": {
+            "nullable": false,
+            "description": "$t:fields.directus_settings.public_registration_verify_email_note",
+            "type": "boolean"
+          },
+          "public_registration_role": {
+            "nullable": true,
+            "description": "$t:fields.directus_settings.public_registration_role_note",
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "$ref": "#/components/schemas/Roles"
+              }
+            ]
+          },
+          "public_registration_email_filter": {
+            "nullable": true,
+            "description": "$t:fields.directus_settings.public_registration_email_filter_note"
           }
         },
         "x-collection": "directus_settings"
-      },
-      "Relations": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "description": "Unique identifier for the relation.",
-            "example": 1,
-            "type": "integer"
-          },
-          "many_collection": {
-            "description": "Collection that has the field that holds the foreign key.",
-            "example": "directus_activity",
-            "type": "string"
-          },
-          "many_field": {
-            "description": "Foreign key. Field that holds the primary key of the related collection.",
-            "example": "user",
-            "type": "string"
-          },
-          "one_collection": {
-            "description": "Collection on the _one_ side of the relationship.",
-            "example": "directus_users",
-            "type": "string"
-          },
-          "one_field": {
-            "description": "Alias column that serves as the _one_ side of the relationship.",
-            "example": null,
-            "type": "string",
-            "nullable": true
-          },
-          "one_collection_field": {
-            "nullable": true,
-            "type": "string"
-          },
-          "one_allowed_collections": {
-            "nullable": true,
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "junction_field": {
-            "description": "Field on the junction table that holds the many field of the related relation.",
-            "example": null,
-            "type": "string",
-            "nullable": true
-          },
-          "sort_field": {
-            "nullable": true,
-            "type": "string"
-          },
-          "one_deselect_action": {
-            "nullable": false,
-            "type": "string"
-          }
-        },
-        "x-collection": "directus_relations"
       },
       "Flows": {
         "type": "object",
@@ -11425,6 +11850,10 @@
           "survey_schema_id": {
             "nullable": true,
             "type": "integer"
+          },
+          "survey_label": {
+            "nullable": true,
+            "type": "string"
           }
         },
         "x-collection": "intensiscore__survey_results"
@@ -11688,6 +12117,10 @@
               }
             ]
           },
+          "slug": {
+            "nullable": true,
+            "type": "string"
+          },
           "tags": {
             "nullable": true,
             "type": "array",
@@ -11704,6 +12137,32 @@
           }
         },
         "x-collection": "intensiscore__solution_sheets"
+      },
+      "ItemsIntensiscoreSurveyResultsSecrets": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "nullable": false,
+            "type": "integer"
+          },
+          "survey_id": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "$ref": "#/components/schemas/ItemsIntensiscoreSurveyResults"
+              }
+            ]
+          },
+          "content": {
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "x-collection": "intensiscore__survey_results_secrets"
       }
     },
     "parameters": {

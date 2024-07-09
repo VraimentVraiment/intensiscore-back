@@ -1,31 +1,36 @@
 {
-  "collection": "intensiscore__solution_sheets",
-  "field": "description",
-  "type": "text",
+  "collection": "intensiscore__survey_results_secrets",
+  "field": "survey_id",
+  "type": "uuid",
   "meta": {
-    "collection": "intensiscore__solution_sheets",
+    "collection": "intensiscore__survey_results_secrets",
     "conditions": null,
     "display": null,
     "display_options": null,
-    "field": "description",
+    "field": "survey_id",
     "group": null,
     "hidden": false,
-    "interface": "input-multiline",
+    "interface": "select-dropdown-m2o",
     "note": null,
-    "options": null,
+    "options": {
+      "enableCreate": false,
+      "enableSelect": false
+    },
     "readonly": false,
-    "required": true,
-    "sort": 7,
-    "special": null,
+    "required": false,
+    "sort": 2,
+    "special": [
+      "m2o"
+    ],
     "translations": null,
     "validation": null,
     "validation_message": null,
     "width": "full"
   },
   "schema": {
-    "name": "description",
-    "table": "intensiscore__solution_sheets",
-    "data_type": "text",
+    "name": "survey_id",
+    "table": "intensiscore__survey_results_secrets",
+    "data_type": "uuid",
     "default_value": null,
     "max_length": null,
     "numeric_precision": null,
@@ -36,7 +41,7 @@
     "is_generated": false,
     "generation_expression": null,
     "has_auto_increment": false,
-    "foreign_key_table": null,
-    "foreign_key_column": null
+    "foreign_key_table": "intensiscore__survey_results",
+    "foreign_key_column": "id"
   }
 }

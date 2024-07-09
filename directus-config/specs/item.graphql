@@ -23,6 +23,10 @@ type Query {
   intensiscore__solution_sheets_by_id(id: ID!, version: String): intensiscore__solution_sheets
   intensiscore__solution_sheets_aggregated(groupBy: [String], filter: intensiscore__solution_sheets_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [intensiscore__solution_sheets_aggregated!]!
   intensiscore__solution_sheets_by_version(version: String!, id: ID!): version_intensiscore__solution_sheets
+  intensiscore__survey_results_secrets(filter: intensiscore__survey_results_secrets_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [intensiscore__survey_results_secrets!]!
+  intensiscore__survey_results_secrets_by_id(id: ID!, version: String): intensiscore__survey_results_secrets
+  intensiscore__survey_results_secrets_aggregated(groupBy: [String], filter: intensiscore__survey_results_secrets_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [intensiscore__survey_results_secrets_aggregated!]!
+  intensiscore__survey_results_secrets_by_version(version: String!, id: ID!): version_intensiscore__survey_results_secrets
 }
 
 type Mutation {
@@ -38,6 +42,8 @@ type Mutation {
   create_intensiscore__solution_sheets_intensiscore__tags_item(data: create_intensiscore__solution_sheets_intensiscore__tags_input!): intensiscore__solution_sheets_intensiscore__tags
   create_intensiscore__solution_sheets_items(filter: intensiscore__solution_sheets_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_intensiscore__solution_sheets_input!]): [intensiscore__solution_sheets!]!
   create_intensiscore__solution_sheets_item(data: create_intensiscore__solution_sheets_input!): intensiscore__solution_sheets
+  create_intensiscore__survey_results_secrets_items(filter: intensiscore__survey_results_secrets_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_intensiscore__survey_results_secrets_input!]): [intensiscore__survey_results_secrets!]!
+  create_intensiscore__survey_results_secrets_item(data: create_intensiscore__survey_results_secrets_input!): intensiscore__survey_results_secrets
   update_intensiscore__survey_results_items(filter: intensiscore__survey_results_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_intensiscore__survey_results_input!): [intensiscore__survey_results!]!
   update_intensiscore__survey_results_batch(filter: intensiscore__survey_results_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_intensiscore__survey_results_input!]): [intensiscore__survey_results!]!
   update_intensiscore__survey_results_item(id: ID!, data: update_intensiscore__survey_results_input!): intensiscore__survey_results
@@ -56,6 +62,9 @@ type Mutation {
   update_intensiscore__solution_sheets_items(filter: intensiscore__solution_sheets_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_intensiscore__solution_sheets_input!): [intensiscore__solution_sheets!]!
   update_intensiscore__solution_sheets_batch(filter: intensiscore__solution_sheets_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_intensiscore__solution_sheets_input!]): [intensiscore__solution_sheets!]!
   update_intensiscore__solution_sheets_item(id: ID!, data: update_intensiscore__solution_sheets_input!): intensiscore__solution_sheets
+  update_intensiscore__survey_results_secrets_items(filter: intensiscore__survey_results_secrets_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_intensiscore__survey_results_secrets_input!): [intensiscore__survey_results_secrets!]!
+  update_intensiscore__survey_results_secrets_batch(filter: intensiscore__survey_results_secrets_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_intensiscore__survey_results_secrets_input!]): [intensiscore__survey_results_secrets!]!
+  update_intensiscore__survey_results_secrets_item(id: ID!, data: update_intensiscore__survey_results_secrets_input!): intensiscore__survey_results_secrets
   delete_intensiscore__survey_results_items(ids: [ID]!): delete_many
   delete_intensiscore__survey_results_item(id: ID!): delete_one
   delete_directus_sync_id_map_items(ids: [ID]!): delete_many
@@ -68,6 +77,8 @@ type Mutation {
   delete_intensiscore__solution_sheets_intensiscore__tags_item(id: ID!): delete_one
   delete_intensiscore__solution_sheets_items(ids: [ID]!): delete_many
   delete_intensiscore__solution_sheets_item(id: ID!): delete_one
+  delete_intensiscore__survey_results_secrets_items(ids: [ID]!): delete_many
+  delete_intensiscore__survey_results_secrets_item(id: ID!): delete_one
 }
 
 type Subscription {
@@ -75,8 +86,8 @@ type Subscription {
   directus_roles_mutated(event: EventEnum): directus_roles_mutated
   directus_folders_mutated(event: EventEnum): directus_folders_mutated
   directus_permissions_mutated(event: EventEnum): directus_permissions_mutated
-  directus_files_mutated(event: EventEnum): directus_files_mutated
   directus_presets_mutated(event: EventEnum): directus_presets_mutated
+  directus_files_mutated(event: EventEnum): directus_files_mutated
   directus_users_mutated(event: EventEnum): directus_users_mutated
   directus_revisions_mutated(event: EventEnum): directus_revisions_mutated
   directus_webhooks_mutated(event: EventEnum): directus_webhooks_mutated
@@ -95,6 +106,7 @@ type Subscription {
   intensiscore__pages_mutated(event: EventEnum): intensiscore__pages_mutated
   intensiscore__solution_sheets_intensiscore__tags_mutated(event: EventEnum): intensiscore__solution_sheets_intensiscore__tags_mutated
   intensiscore__solution_sheets_mutated(event: EventEnum): intensiscore__solution_sheets_mutated
+  intensiscore__survey_results_secrets_mutated(event: EventEnum): intensiscore__survey_results_secrets_mutated
 }
 
 """The `Boolean` scalar type represents `true` or `false`."""
@@ -235,6 +247,9 @@ type directus_files {
   metadata_func: count_functions
   focal_point_x: Int
   focal_point_y: Int
+  tus_id: String
+  tus_data: JSON
+  tus_data_func: count_functions
 }
 
 type directus_files_mutated {
@@ -469,6 +484,17 @@ type directus_settings {
   report_error_url: String
   report_bug_url: String
   report_feature_url: String
+
+  """$t:fields.directus_settings.public_registration_note"""
+  public_registration: Boolean!
+
+  """$t:fields.directus_settings.public_registration_verify_email_note"""
+  public_registration_verify_email: Boolean
+  public_registration_role(filter: directus_roles_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_roles
+
+  """$t:fields.directus_settings.public_registration_email_filter_note"""
+  public_registration_email_filter: JSON
+  public_registration_email_filter_func: count_functions
 }
 
 type directus_settings_mutated {
@@ -692,6 +718,7 @@ type intensiscore__solution_sheets {
   content: String
   description: String
   image(filter: directus_files_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_files
+  slug: String
   tags(filter: intensiscore__solution_sheets_intensiscore__tags_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [intensiscore__solution_sheets_intensiscore__tags]
   tags_func: count_functions
 }
@@ -718,6 +745,7 @@ type intensiscore__solution_sheets_aggregated_count {
   content: Int
   description: Int
   image: Int
+  slug: Int
   tags: Int
 }
 
@@ -775,6 +803,7 @@ type intensiscore__survey_results {
   date_created_func: datetime_functions
   content: String
   survey_schema_id: Int
+  survey_label: String
 }
 
 type intensiscore__survey_results_aggregated {
@@ -795,6 +824,7 @@ type intensiscore__survey_results_aggregated_count {
   date_created: Int
   content: Int
   survey_schema_id: Int
+  survey_label: Int
 }
 
 type intensiscore__survey_results_aggregated_fields {
@@ -805,6 +835,41 @@ type intensiscore__survey_results_mutated {
   key: ID!
   event: EventEnum
   data: intensiscore__survey_results
+}
+
+type intensiscore__survey_results_secrets {
+  id: ID!
+  survey_id(filter: intensiscore__survey_results_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): intensiscore__survey_results
+  content: String
+}
+
+type intensiscore__survey_results_secrets_aggregated {
+  group: JSON
+  countAll: Int
+  count: intensiscore__survey_results_secrets_aggregated_count
+  countDistinct: intensiscore__survey_results_secrets_aggregated_count
+  avg: intensiscore__survey_results_secrets_aggregated_fields
+  sum: intensiscore__survey_results_secrets_aggregated_fields
+  avgDistinct: intensiscore__survey_results_secrets_aggregated_fields
+  sumDistinct: intensiscore__survey_results_secrets_aggregated_fields
+  min: intensiscore__survey_results_secrets_aggregated_fields
+  max: intensiscore__survey_results_secrets_aggregated_fields
+}
+
+type intensiscore__survey_results_secrets_aggregated_count {
+  id: Int
+  survey_id: Int
+  content: Int
+}
+
+type intensiscore__survey_results_secrets_aggregated_fields {
+  id: Float
+}
+
+type intensiscore__survey_results_secrets_mutated {
+  key: ID!
+  event: EventEnum
+  data: intensiscore__survey_results_secrets
 }
 
 type intensiscore__tags {
@@ -873,6 +938,7 @@ type version_intensiscore__solution_sheets {
   content: String
   description: String
   image: JSON
+  slug: String
   tags: JSON
 }
 
@@ -889,6 +955,14 @@ type version_intensiscore__survey_results {
   date_created: Date
   content: String
   survey_schema_id: Int
+  survey_label: String
+}
+
+""""""
+type version_intensiscore__survey_results_secrets {
+  id: ID
+  survey_id: JSON
+  content: String
 }
 
 """"""
@@ -949,6 +1023,8 @@ input create_directus_files_input {
   metadata: JSON
   focal_point_x: Int
   focal_point_y: Int
+  tus_id: String
+  tus_data: JSON
 }
 
 input create_directus_folders_input {
@@ -1023,6 +1099,7 @@ input create_intensiscore__solution_sheets_input {
   content: String
   description: String
   image: create_directus_files_input
+  slug: String
   tags: [create_intensiscore__solution_sheets_intensiscore__tags_input]
 }
 
@@ -1037,6 +1114,13 @@ input create_intensiscore__survey_results_input {
   date_created: Date
   content: String
   survey_schema_id: Int
+  survey_label: String
+}
+
+input create_intensiscore__survey_results_secrets_input {
+  id: ID
+  survey_id: create_intensiscore__survey_results_input
+  content: String
 }
 
 input create_intensiscore__tags_input {
@@ -1133,6 +1217,9 @@ input directus_files_filter {
   metadata_func: count_function_filter_operators
   focal_point_x: number_filter_operators
   focal_point_y: number_filter_operators
+  tus_id: string_filter_operators
+  tus_data: string_filter_operators
+  tus_data_func: count_function_filter_operators
   _and: [directus_files_filter]
   _or: [directus_files_filter]
 }
@@ -1327,6 +1414,7 @@ input intensiscore__solution_sheets_filter {
   content: string_filter_operators
   description: string_filter_operators
   image: directus_files_filter
+  slug: string_filter_operators
   tags: intensiscore__solution_sheets_intensiscore__tags_filter
   tags_func: count_function_filter_operators
   _and: [intensiscore__solution_sheets_filter]
@@ -1347,8 +1435,17 @@ input intensiscore__survey_results_filter {
   date_created_func: datetime_function_filter_operators
   content: string_filter_operators
   survey_schema_id: number_filter_operators
+  survey_label: string_filter_operators
   _and: [intensiscore__survey_results_filter]
   _or: [intensiscore__survey_results_filter]
+}
+
+input intensiscore__survey_results_secrets_filter {
+  id: number_filter_operators
+  survey_id: intensiscore__survey_results_filter
+  content: string_filter_operators
+  _and: [intensiscore__survey_results_secrets_filter]
+  _or: [intensiscore__survey_results_secrets_filter]
 }
 
 input intensiscore__tags_filter {
@@ -1421,6 +1518,8 @@ input update_directus_files_input {
   metadata: JSON
   focal_point_x: Int
   focal_point_y: Int
+  tus_id: String
+  tus_data: JSON
 }
 
 input update_directus_folders_input {
@@ -1495,6 +1594,7 @@ input update_intensiscore__solution_sheets_input {
   content: String
   description: String
   image: update_directus_files_input
+  slug: String
   tags: [update_intensiscore__solution_sheets_intensiscore__tags_input]
 }
 
@@ -1509,6 +1609,13 @@ input update_intensiscore__survey_results_input {
   date_created: Date
   content: String
   survey_schema_id: Int
+  survey_label: String
+}
+
+input update_intensiscore__survey_results_secrets_input {
+  id: ID
+  survey_id: update_intensiscore__survey_results_input
+  content: String
 }
 
 input update_intensiscore__tags_input {

@@ -26,12 +26,12 @@ type Query {
   permissions(filter: directus_permissions_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [directus_permissions!]!
   permissions_by_id(id: ID!, version: String): directus_permissions
   permissions_aggregated(groupBy: [String], filter: directus_permissions_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [directus_permissions_aggregated!]!
-  files(filter: directus_files_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [directus_files!]!
-  files_by_id(id: ID!, version: String): directus_files
-  files_aggregated(groupBy: [String], filter: directus_files_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [directus_files_aggregated!]!
   presets(filter: directus_presets_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [directus_presets!]!
   presets_by_id(id: ID!, version: String): directus_presets
   presets_aggregated(groupBy: [String], filter: directus_presets_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [directus_presets_aggregated!]!
+  files(filter: directus_files_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [directus_files!]!
+  files_by_id(id: ID!, version: String): directus_files
+  files_aggregated(groupBy: [String], filter: directus_files_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [directus_files_aggregated!]!
   users(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [directus_users!]!
   users_by_id(id: ID!, version: String): directus_users
   users_aggregated(groupBy: [String], filter: directus_users_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [directus_users_aggregated!]!
@@ -84,6 +84,8 @@ type Mutation {
   utils_revert(revision: ID!): Boolean
   utils_cache_clear: Void
   users_invite_accept(token: String!, password: String!): Boolean
+  users_register(email: String!, password: String!, verification_url: String, first_name: String, last_name: String): Boolean
+  users_register_verify(token: String!): Boolean
   create_collections_item(data: create_directus_collections_input!): directus_collections
   update_collections_item(collection: String!, data: update_directus_collections_input!): directus_collections
   delete_collections_item(collection: String!): delete_collection
@@ -106,10 +108,10 @@ type Mutation {
   create_folders_item(data: create_directus_folders_input!): directus_folders
   create_permissions_items(filter: directus_permissions_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_directus_permissions_input!]): [directus_permissions!]!
   create_permissions_item(data: create_directus_permissions_input!): directus_permissions
-  create_files_items(filter: directus_files_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_directus_files_input!]): [directus_files!]!
-  create_files_item(data: create_directus_files_input!): directus_files
   create_presets_items(filter: directus_presets_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_directus_presets_input!]): [directus_presets!]!
   create_presets_item(data: create_directus_presets_input!): directus_presets
+  create_files_items(filter: directus_files_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_directus_files_input!]): [directus_files!]!
+  create_files_item(data: create_directus_files_input!): directus_files
   create_users_items(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_directus_users_input!]): [directus_users!]!
   create_users_item(data: create_directus_users_input!): directus_users
   create_webhooks_items(filter: directus_webhooks_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_directus_webhooks_input!]): [directus_webhooks!]!
@@ -139,12 +141,12 @@ type Mutation {
   update_permissions_items(filter: directus_permissions_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_directus_permissions_input!): [directus_permissions!]!
   update_permissions_batch(filter: directus_permissions_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_directus_permissions_input!]): [directus_permissions!]!
   update_permissions_item(id: ID!, data: update_directus_permissions_input!): directus_permissions
-  update_files_items(filter: directus_files_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_directus_files_input!): [directus_files!]!
-  update_files_batch(filter: directus_files_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_directus_files_input!]): [directus_files!]!
-  update_files_item(id: ID!, data: update_directus_files_input!): directus_files
   update_presets_items(filter: directus_presets_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_directus_presets_input!): [directus_presets!]!
   update_presets_batch(filter: directus_presets_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_directus_presets_input!]): [directus_presets!]!
   update_presets_item(id: ID!, data: update_directus_presets_input!): directus_presets
+  update_files_items(filter: directus_files_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_directus_files_input!): [directus_files!]!
+  update_files_batch(filter: directus_files_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_directus_files_input!]): [directus_files!]!
+  update_files_item(id: ID!, data: update_directus_files_input!): directus_files
   update_users_items(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_directus_users_input!): [directus_users!]!
   update_users_batch(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_directus_users_input!]): [directus_users!]!
   update_users_item(id: ID!, data: update_directus_users_input!): directus_users
@@ -182,10 +184,10 @@ type Mutation {
   delete_folders_item(id: ID!): delete_one
   delete_permissions_items(ids: [ID]!): delete_many
   delete_permissions_item(id: ID!): delete_one
-  delete_files_items(ids: [ID]!): delete_many
-  delete_files_item(id: ID!): delete_one
   delete_presets_items(ids: [ID]!): delete_many
   delete_presets_item(id: ID!): delete_one
+  delete_files_items(ids: [ID]!): delete_many
+  delete_files_item(id: ID!): delete_one
   delete_users_items(ids: [ID]!): delete_many
   delete_users_item(id: ID!): delete_one
   delete_webhooks_items(ids: [ID]!): delete_many
@@ -213,8 +215,8 @@ type Subscription {
   directus_roles_mutated(event: EventEnum): directus_roles_mutated
   directus_folders_mutated(event: EventEnum): directus_folders_mutated
   directus_permissions_mutated(event: EventEnum): directus_permissions_mutated
-  directus_files_mutated(event: EventEnum): directus_files_mutated
   directus_presets_mutated(event: EventEnum): directus_presets_mutated
+  directus_files_mutated(event: EventEnum): directus_files_mutated
   directus_users_mutated(event: EventEnum): directus_users_mutated
   directus_revisions_mutated(event: EventEnum): directus_revisions_mutated
   directus_webhooks_mutated(event: EventEnum): directus_webhooks_mutated
@@ -233,6 +235,7 @@ type Subscription {
   intensiscore__pages_mutated(event: EventEnum): intensiscore__pages_mutated
   intensiscore__solution_sheets_intensiscore__tags_mutated(event: EventEnum): intensiscore__solution_sheets_intensiscore__tags_mutated
   intensiscore__solution_sheets_mutated(event: EventEnum): intensiscore__solution_sheets_mutated
+  intensiscore__survey_results_secrets_mutated(event: EventEnum): intensiscore__survey_results_secrets_mutated
 }
 
 """The `Boolean` scalar type represents `true` or `false`."""
@@ -553,6 +556,9 @@ type directus_files {
   metadata_func: count_functions
   focal_point_x: Int
   focal_point_y: Int
+  tus_id: String
+  tus_data: JSON
+  tus_data_func: count_functions
 }
 
 type directus_files_aggregated {
@@ -592,6 +598,8 @@ type directus_files_aggregated_count {
   metadata: Int
   focal_point_x: Int
   focal_point_y: Int
+  tus_id: Int
+  tus_data: Int
 }
 
 type directus_files_aggregated_fields {
@@ -1113,6 +1121,17 @@ type directus_settings {
   report_error_url: String
   report_bug_url: String
   report_feature_url: String
+
+  """$t:fields.directus_settings.public_registration_note"""
+  public_registration: Boolean!
+
+  """$t:fields.directus_settings.public_registration_verify_email_note"""
+  public_registration_verify_email: Boolean
+  public_registration_role(filter: directus_roles_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_roles
+
+  """$t:fields.directus_settings.public_registration_email_filter_note"""
+  public_registration_email_filter: JSON
+  public_registration_email_filter_func: count_functions
 }
 
 type directus_settings_mutated {
@@ -1430,6 +1449,7 @@ type intensiscore__solution_sheets {
   content: String
   description: String
   image(filter: directus_files_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_files
+  slug: String
   tags(filter: intensiscore__solution_sheets_intensiscore__tags_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [intensiscore__solution_sheets_intensiscore__tags]
   tags_func: count_functions
 }
@@ -1458,12 +1478,25 @@ type intensiscore__survey_results {
   date_created_func: datetime_functions
   content: String
   survey_schema_id: Int
+  survey_label: String
 }
 
 type intensiscore__survey_results_mutated {
   key: ID!
   event: EventEnum
   data: intensiscore__survey_results
+}
+
+type intensiscore__survey_results_secrets {
+  id: ID!
+  survey_id(filter: intensiscore__survey_results_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): intensiscore__survey_results
+  content: String
+}
+
+type intensiscore__survey_results_secrets_mutated {
+  key: ID!
+  event: EventEnum
+  data: intensiscore__survey_results_secrets
 }
 
 type intensiscore__tags {
@@ -1497,6 +1530,8 @@ type server_info_project {
   public_background: String
   public_note: String
   custom_css: String
+  public_registration: Boolean
+  public_registration_verify_email: Boolean
 }
 
 type server_info_query_limit {
@@ -1593,6 +1628,8 @@ input create_directus_files_input {
   metadata: JSON
   focal_point_x: Int
   focal_point_y: Int
+  tus_id: String
+  tus_data: JSON
 }
 
 input create_directus_flows_input {
@@ -1949,6 +1986,9 @@ input directus_files_filter {
   metadata_func: count_function_filter_operators
   focal_point_x: number_filter_operators
   focal_point_y: number_filter_operators
+  tus_id: string_filter_operators
+  tus_data: string_filter_operators
+  tus_data_func: count_function_filter_operators
   _and: [directus_files_filter]
   _or: [directus_files_filter]
 }
@@ -2243,6 +2283,7 @@ input intensiscore__solution_sheets_filter {
   content: string_filter_operators
   description: string_filter_operators
   image: directus_files_filter
+  slug: string_filter_operators
   tags: intensiscore__solution_sheets_intensiscore__tags_filter
   tags_func: count_function_filter_operators
   _and: [intensiscore__solution_sheets_filter]
@@ -2255,6 +2296,17 @@ input intensiscore__solution_sheets_intensiscore__tags_filter {
   intensiscore__tags_id: intensiscore__tags_filter
   _and: [intensiscore__solution_sheets_intensiscore__tags_filter]
   _or: [intensiscore__solution_sheets_intensiscore__tags_filter]
+}
+
+input intensiscore__survey_results_filter {
+  id: string_filter_operators
+  date_created: date_filter_operators
+  date_created_func: datetime_function_filter_operators
+  content: string_filter_operators
+  survey_schema_id: number_filter_operators
+  survey_label: string_filter_operators
+  _and: [intensiscore__survey_results_filter]
+  _or: [intensiscore__survey_results_filter]
 }
 
 input intensiscore__tags_filter {
@@ -2358,6 +2410,8 @@ input update_directus_files_input {
   metadata: JSON
   focal_point_x: Int
   focal_point_y: Int
+  tus_id: String
+  tus_data: JSON
 }
 
 input update_directus_flows_input {
@@ -2506,6 +2560,16 @@ input update_directus_settings_input {
   report_error_url: String
   report_bug_url: String
   report_feature_url: String
+
+  """$t:fields.directus_settings.public_registration_note"""
+  public_registration: Boolean
+
+  """$t:fields.directus_settings.public_registration_verify_email_note"""
+  public_registration_verify_email: Boolean
+  public_registration_role: update_directus_roles_input
+
+  """$t:fields.directus_settings.public_registration_email_filter_note"""
+  public_registration_email_filter: JSON
 }
 
 input update_directus_shares_input {

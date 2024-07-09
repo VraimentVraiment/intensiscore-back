@@ -1,6 +1,18 @@
 [
   {
     "role": null,
+    "collection": "directus_files",
+    "action": "read",
+    "permissions": {},
+    "validation": {},
+    "presets": null,
+    "fields": [
+      "*"
+    ],
+    "_syncId": "cbda7ea6-47c0-4025-9f35-83dfd8051c0e"
+  },
+  {
+    "role": null,
     "collection": "intensiscore__pages",
     "action": "read",
     "permissions": {},
@@ -73,6 +85,30 @@
   },
   {
     "role": null,
+    "collection": "intensiscore__survey_results_secrets",
+    "action": "create",
+    "permissions": {},
+    "validation": {},
+    "presets": null,
+    "fields": [
+      "*"
+    ],
+    "_syncId": "a104ea72-bc1f-4f1e-b99d-dab4f554ebab"
+  },
+  {
+    "role": null,
+    "collection": "intensiscore__survey_results_secrets",
+    "action": "read",
+    "permissions": null,
+    "validation": null,
+    "presets": null,
+    "fields": [
+      "id"
+    ],
+    "_syncId": "93ef4d0b-78a8-462f-af77-3289e7ab201c"
+  },
+  {
+    "role": null,
     "collection": "intensiscore__survey_results",
     "action": "create",
     "permissions": {},
@@ -91,7 +127,9 @@
     "validation": {},
     "presets": null,
     "fields": [
-      "*"
+      "id",
+      "survey_label",
+      "date_created"
     ],
     "_syncId": "d2e418c1-537a-4d01-9123-f57564b8835a"
   },
