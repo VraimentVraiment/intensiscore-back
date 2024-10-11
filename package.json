@@ -1,8 +1,13 @@
 {
   "name": "intensiscore_back",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "The backend of the Intensi'Score project (intensiscore.m2intenses.com)",
+  "version": "0.1.0",
+  "author": "ShallowRed (Lucas Poulain)",
+  "license": "GPL-3.0-only",
+  "keywords": [
+    "directus",
+    "Intensi'Score"
+  ],
   "engines": {
     "node": ">=20.0.0"
   },
@@ -15,9 +20,6 @@
     "snapshot:apply": "directus-sync push",
     "argon2-rebuild": "npm rebuild argon2 --build-from-source"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "directus": "^10.13.0",
     "directus-extension-sync": "^1.1.6",
