@@ -21,7 +21,7 @@
     "argon2-rebuild": "npm rebuild argon2 --build-from-source"
   },
   "dependencies": {
-    "directus": "^10.13.0",
+    "directus": "^10.13.4",
     "directus-extension-sync": "^1.1.6",
     "directus-sync": "^1.5.3",
     "pg": "^8.12.0"
